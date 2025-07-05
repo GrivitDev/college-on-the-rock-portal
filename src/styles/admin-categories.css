@@ -1,0 +1,490 @@
+/* Colors */
+:root {
+    --color-primary: #9F0300;
+    --color-secondary: #0A0A0A;
+    --color-tertiary: #F3F3F3;
+    --color-button-alt: #004E64;
+    --color-hover-accent: #6C0000;
+    --color-error: #C0392B;
+  }
+  
+  /* Page wrapper */
+  .admin-categories-page-wrapper {
+    background-color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 1rem; 
+    box-sizing: border-box;
+  }
+  
+  .admin-categories-content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1020px;
+    gap: 0.75rem; 
+  }
+  
+  /* Header */
+  .admin-categories-header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+  
+  /* Instruction */
+  .admin-categories-instruction {
+    font-size: 1rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+  }
+  
+  /* Container & Form */
+  .admin-categories-form {
+    max-width: 1020px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1.5rem 1.5rem;
+    background-color: var(--color-tertiary);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Labels */
+  .admin-categories-label,
+  .admin-categories-legend {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: block;
+    color: var(--color-secondary);
+  }
+  
+  /* Select */
+  .admin-categories-select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--color-secondary);
+    background-color: white;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .admin-categories-select:focus {
+    outline: none;
+    border-color: var(--color-hover-accent);
+    box-shadow: 0 0 3px var(--color-primary);
+  }
+  
+  /* Fieldsets */
+  .admin-categories-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Radio and Checkbox Groups */
+  .admin-categories-radio-group,
+  .admin-categories-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.25rem;
+  }
+  
+  .admin-categories-radio-label,
+  .admin-categories-checkbox-label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+  }
+  
+  .admin-categories-radio-label input,
+  .admin-categories-checkbox-label input {
+    cursor: pointer;
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+  
+  /* Text Inputs */
+  .admin-categories-input {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--color-secondary);
+    background-color: white;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .admin-categories-input:focus {
+    outline: none;
+    border-color: var(--color-hover-accent);
+    box-shadow: 0 0 3px var(--color-primary);
+  }
+  
+  /* Payment Items Title */
+  .admin-categories-payment-items-title {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+  }
+  
+  /* Payment item rows grid */
+  .admin-categories-payment-item-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  
+  /* Payment item inputs */
+  .admin-categories-payment-item-input {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.95rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 4px;
+    color: var(--color-secondary);
+    background-color: white;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .admin-categories-payment-item-input:focus {
+    outline: none;
+    border-color: var(--color-hover-accent);
+    box-shadow: 0 0 3px var(--color-primary);
+  }
+  
+  /* Add Item Button */
+  .admin-categories-add-item-button {
+    align-self: flex-start;
+    margin-top: 1rem;
+    background-color: var(--color-button-alt);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.15rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-categories-add-item-button:hover:not(:disabled) {
+    background-color: #003946;
+  }
+  
+  .admin-categories-add-item-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Inline Form Messages */
+  .admin-categories-form-message {
+    margin-top: 1rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  
+  .admin-categories-form-message--success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1.5px solid #c3e6cb;
+  }
+  
+  .admin-categories-form-message--error {
+    background-color: var(--color-error);
+    color: white;
+    border: 1.5px solid #a93226;
+  }
+  
+  /* Submit Button */
+  .admin-categories-submit-button {
+    margin-top: 1.8rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.75rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-categories-submit-button:hover:not(:disabled) {
+    background-color: var(--color-hover-accent);
+  }
+  
+  .admin-categories-submit-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Spinner */
+  .admin-categories-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: admin-categories-spin 1s linear infinite;
+  }
+  
+  @keyframes admin-categories-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  
+  /* Tablets and below */
+  @media (max-width: 768px) {
+    .admin-categories-payment-item-row {
+      grid-template-columns: 1fr; /* stack inputs vertically */
+    }
+    .admin-categories-payment-item-input {
+      width: 100%;
+    }
+    .admin-categories-radio-group,
+    .admin-categories-checkbox-group {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+  
+  /* Mobile phones */
+  @media (max-width: 480px) {
+    .admin-categories-form {
+      padding: 1rem;
+      margin: 1rem;
+    }
+    .admin-categories-submit-button,
+    .admin-categories-add-item-button {
+      width: 100%;
+      text-align: center;
+      padding: 0.75rem 0;
+    }
+    .admin-categories-input,
+    .admin-categories-select,
+    .admin-categories-payment-item-input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .admin-categories-label,
+    .admin-categories-legend {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Button hover transition fix for touch */
+  .admin-categories-add-item-button:hover:not(:disabled),
+  .admin-categories-submit-button:hover:not(:disabled) {
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .admin-categories-list {
+    margin-top: 2rem;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .admin-categories-list-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .admin-categories-list-details {
+    font-size: 1rem;
+    color: #0A0A0A;
+    flex: 1;
+  }
+  
+  .admin-categories-list-actions button {
+    margin-left: 0.5rem;
+    background-color: #004E64;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .admin-categories-list-actions button:hover {
+    background-color: #003849;
+  }
+  
+  .admin-categories-list-actions button:last-child {
+    background-color: #C0392B;
+  }
+  
+  .admin-categories-list-actions button:last-child:hover {
+    background-color: #6C0000;
+  }
+  
+  /* Divider line between sections */
+  .admin-categories-divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 2rem 0;
+  }
+  
+  /* Subheader */
+  .admin-categories-subheader {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #0A0A0A;
+  }
+  
+  /* Reset edit button */
+  .admin-categories-reset-button {
+    background-color: transparent;
+    color: #9F0300;
+    border: 1px solid #9F0300;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .admin-categories-reset-button:hover {
+    background-color: #6C0000;
+    color: #fff;
+  }
+  
+  /* Responsive handling */
+  @media (max-width: 768px) {
+    .admin-categories-list-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .admin-categories-list-actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+  
+    .admin-categories-reset-button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  .admin-categories-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .admin-categories-modal {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-size: large;
+    color: #000000;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .admin-categories-modal-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .admin-categories-modal-buttons button {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .admin-categories-modal-buttons button:first-child {
+    background-color: #C0392B;
+    color: white;
+  }
+  
+  .admin-categories-modal-buttons button:first-child:hover {
+    background-color: #6C0000;
+  }
+  
+  .admin-categories-modal-buttons button:last-child {
+    background-color: #F3F3F3;
+    color: #0A0A0A;
+  }
+  
+  .admin-categories-modal-buttons button:last-child:hover {
+    background-color: #ddd;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

@@ -1,0 +1,136 @@
+:root {
+    --color-primary: #9F0300;
+    --color-secondary: #0A0A0A;
+    --color-tertiary: #F3F3F3;
+    --color-button-alt: #004E64;
+    --color-hover-accent: #6C0000;
+    --color-error: #C0392B;
+  }
+  
+  .receipt-verifier-wrapper {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem 1.25rem;
+    background-color: var(--color-tertiary);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-secondary);
+  }
+  
+  .receipt-verifier-header {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .receipt-verifier-textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 6px;
+    resize: vertical;
+    color: var(--color-secondary);
+    background-color: white;
+    transition: border-color 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  
+  .receipt-verifier-textarea:focus {
+    outline: none;
+    border-color: var(--color-hover-accent);
+    box-shadow: 0 0 5px var(--color-primary);
+  }
+  
+  .receipt-verifier-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+  }
+  
+  .receipt-verifier-button-start {
+    background-color: var(--color-button-alt);
+    color: white;
+  }
+  
+  .receipt-verifier-button-start:hover:not(:disabled) {
+    background-color: #003946;
+  }
+  
+  .receipt-verifier-button-stop {
+    background-color: var(--color-error);
+    color: white;
+  }
+  
+  .receipt-verifier-button-stop:hover:not(:disabled) {
+    background-color: #a93226;
+  }
+  
+  .receipt-verifier-button-verify {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .receipt-verifier-button-verify:hover:not(:disabled) {
+    background-color: var(--color-hover-accent);
+  }
+  
+  .receipt-verifier-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  #qr-scanner-region {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000; /* black background for scanner */
+  }
+  
+  .receipt-verifier-message-error {
+    color: var(--color-error);
+    font-weight: 600;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
+  .receipt-verifier-message-result {
+    margin-top: 1rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .receipt-verifier-message-result.valid {
+    color: green;
+  }
+  
+  .receipt-verifier-message-result.invalid {
+    color: var(--color-error);
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .receipt-verifier-wrapper {
+      margin: 1rem;
+      padding: 1rem;
+    }
+  
+    .receipt-verifier-button {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+  

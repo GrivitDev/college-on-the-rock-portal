@@ -1,0 +1,176 @@
+.student-dashboard-container {
+  padding: 32px 16px;
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.student-dashboard-wrapper {
+  max-width: 1700px; /* or 100% for full width, adjust as needed */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .student-dashboard-wrapper {
+    padding: 20px 12px;
+  }
+}
+
+.student-dashboard-header {
+  margin-bottom: 32px;
+}
+
+.student-dashboard-logo {
+  display: block;
+  margin: 0 auto -60px;
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+.student-dashboard-institution {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #9F0300;
+  text-transform: uppercase;
+  margin-top: 80px;
+}
+
+.student-dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  font-weight: bold;
+  color: #9b0000;
+}
+
+.student-info {
+  margin-bottom: 32px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.student-dashboard-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 32px auto;
+  max-width: 400px;
+  text-align: left;
+}
+
+.student-dashboard-links li {
+  margin: 12px 0;
+}
+
+.student-dashboard-links a {
+  display: block;
+  background-color: #fae4dc;
+  padding: 14px 20px;
+  border-left: 5px solid #218b00;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #8f0000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.student-dashboard-links a:hover {
+  background-color: #085e00;
+  color: rgb(206, 187, 187);
+  border-left-color: #00fa21;
+  transform: translateX(4px);
+}
+
+
+.logout-button {
+  background-color: #9F0300;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #6C0000;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+  .student-dashboard-logo {
+    width: 120px;
+  }
+
+  .student-dashboard-institution {
+    font-size: 1rem;
+  }
+
+  .student-dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+}
+
+/* Instructions styling */
+.student-instructions {
+  background-color: #FFF0F0; /* Light pink, matches links bg */
+  border-left: 5px solid #9F0300; /* Primary deep red */
+  padding: 1.5rem 2rem;
+  margin: 2rem auto 3rem auto;
+  max-width: 1000px;
+  border-radius: 8px;
+  color: #0A0A0A;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.05);
+  text-align: left;
+}
+
+.student-instructions h3 {
+  font-size: 1.5rem;
+  color: #9F0300;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.student-instructions ol {
+  padding-left: 1.25rem;
+}
+
+.student-instructions ol li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  list-style-position: inside;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Emoji bullet */
+.student-instructions ol li::marker {
+  font-weight: 900;
+  color: #9F0300;
+  font-size: 1.1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .student-instructions {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .student-instructions h3 {
+    font-size: 1.25rem;
+  }
+}

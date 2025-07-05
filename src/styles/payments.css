@@ -1,0 +1,312 @@
+/* Colors */
+:root {
+    --color-primary: #9F0300;
+    --color-secondary: #0A0A0A;
+    --color-tertiary: #F3F3F3;
+    --color-button-alt: #004E64;
+    --color-hover-accent: #6C0000;
+    --color-error: #C0392B;
+  }
+  
+  /* Page wrapper */
+  .admin-payments-page-wrapper {
+    background-color: white;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Container */
+  .admin-payments-container {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .admin-payments-header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .admin-payments-view {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Filters */
+  .admin-payments-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-payments-filters select {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 4px;
+    background-color: white;
+    color: var(--color-secondary);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 150px;
+    flex: 1 1 auto;
+  }
+  
+  .admin-payments-filters select:focus {
+    outline: none;
+    border-color: var(--color-hover-accent);
+    box-shadow: 0 0 3px var(--color-primary);
+  }
+  
+  /* Message */
+  .admin-payments-message {
+    margin: 1rem 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    text-align: center;
+  }
+  
+  /* Table */
+  .admin-payments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+  
+  .admin-payments-table th,
+  .admin-payments-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    overflow-wrap: break-word;
+  }
+  
+  .admin-payments-table th {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    user-select: none;
+  }
+  
+  .admin-payments-table tbody tr:hover {
+    background-color: var(--color-tertiary);
+    cursor: pointer;
+  }
+  
+  /* Expanded row */
+  .admin-payments-expanded-row td {
+    background-color: var(--color-tertiary);
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+  }
+  
+  /* Card grid */
+  .admin-payments-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Card */
+  .admin-payments-card {
+    background-color: var(--color-tertiary);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+  }
+  
+  /* Actions */
+  .admin-payments-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .admin-payments-actions button {
+    flex: 1;
+    padding: 0.5rem 0;
+    background-color: var(--color-primary);
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .admin-payments-actions button:hover {
+    background-color: var(--color-hover-accent);
+  }
+  
+  /* Modal overlay */
+  .admin-payments-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  /* Modal content */
+  .admin-payments-modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Modal actions */
+  .admin-payments-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .admin-payments-modal-actions button {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-payments-modal-actions button:hover {
+    background-color: var(--color-hover-accent);
+  }
+  
+  /* Textarea in modal */
+  .admin-payments-modal-content textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1.5px solid var(--color-primary);
+    resize: vertical;
+    width: 100%;
+    color: var(--color-secondary);
+  }
+  
+  .admin-payments-modal-content textarea:focus {
+    outline: none;
+    border-color: var(--color-hover-accent);
+    box-shadow: 0 0 3px var(--color-primary);
+  }
+  
+  /* Responsive adjustments */
+  
+  /* Tablets and smaller */
+  @media (max-width: 1024px) {
+    .admin-payments-filters {
+      flex-direction: column;
+    }
+  
+    .admin-payments-filters select {
+      min-width: 100%;
+      flex: none;
+    }
+  
+    .admin-payments-actions {
+      flex-direction: column;
+    }
+  
+    .admin-payments-actions button {
+      width: 100%;
+    }
+  }
+  
+  /* Mobile phones */
+  @media (max-width: 600px) {
+    .admin-payments-container {
+      padding: 0 0.5rem;
+    }
+  
+    .admin-payments-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .admin-payments-table thead,
+    .admin-payments-table tbody,
+    .admin-payments-table th,
+    .admin-payments-table td,
+    .admin-payments-table tr {
+      display: block;
+    }
+  
+    .admin-payments-table thead tr {
+      display: none; /* hide headers */
+    }
+  
+    .admin-payments-table tbody tr {
+      margin-bottom: 1rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 8px;
+      padding: 0.75rem;
+      background-color: var(--color-tertiary);
+    }
+  
+    .admin-payments-table tbody tr td {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      position: relative;
+    }
+  
+    .admin-payments-table tbody tr td:last-child {
+      border-bottom: none;
+    }
+  
+    /* Add labels before each data cell on mobile */
+    .admin-payments-table tbody tr td:nth-child(1)::before { content: "Date:"; font-weight: 700; }
+    .admin-payments-table tbody tr td:nth-child(2)::before { content: "Matric No:"; font-weight: 700; }
+    .admin-payments-table tbody tr td:nth-child(3)::before { content: "Name:"; font-weight: 700; }
+    .admin-payments-table tbody tr td:nth-child(4)::before { content: "Level:"; font-weight: 700; }
+    .admin-payments-table tbody tr td:nth-child(5)::before { content: "Category:"; font-weight: 700; }
+    .admin-payments-table tbody tr td:nth-child(6)::before { content: "Amount:"; font-weight: 700; }
+    .admin-payments-table tbody tr td:nth-child(7)::before { content: "Status:"; font-weight: 700; }
+  
+    /* Card grid adjustment */
+    .admin-payments-card-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  

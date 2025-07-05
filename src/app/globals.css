@@ -1,0 +1,67 @@
+
+/* === Root Theme Variables === */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+
+  .home-footer {
+    background-color: #121212;
+    color: #bbb;
+    border-top: 1px solid #333;
+  }
+}
+
+/* === Base Styling === */
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* === Main Layout === */
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.page-wrapper {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* === Footer Styling === */
+.home-footer {
+  text-align: center;
+  font-size: clamp(0.85rem, 0.9vw, 1rem);
+  color: #555;
+  padding: 24px 16px;
+  background-color: #F3F3F3;
+  border-top: 1px solid #eee;
+}

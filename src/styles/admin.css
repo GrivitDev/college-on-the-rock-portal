@@ -1,0 +1,167 @@
+.admin-container {
+  padding: 2rem 1.5rem;
+  background-color: #F3F3F3;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #0A0A0A;
+  box-sizing: border-box;
+  /* max-width: 100%; */
+  /* overflow-x: hidden; */
+}
+
+/* Center content properly */
+.admin-links-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-header-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.admin-logo {
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.admin-institution {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9F0300;
+  max-width: 800px;
+}
+
+.admin-dashboard-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #004E64;
+}
+
+
+.admin-links-list li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  color: #0A0A0A;
+  border-left: 4px solid #9F0300;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.admin-links-list li a:hover {
+  background-color: #f9f9f9;
+  border-left-color: #6C0000;
+}
+
+/* === Mobile === */
+@media screen and (max-width: 480px) {
+  .admin-institution {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .admin-logo {
+    width: 90px !important;
+    height: 90px !important;
+  }
+}
+
+.admin-main-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F3F3F3;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.admin-session-container {
+  padding: 2rem 1rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #ffffff; /* 🟢 Always white */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.admin-session-title {
+  font-size: 1.5rem;
+  color: #9F0300;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.admin-session-instruction {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.admin-session-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.admin-session-input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #0A0A0A;
+}
+
+.admin-session-button {
+  background-color: #9F0300;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.admin-session-button:hover {
+  background-color: #6C0000;
+}
+
+.admin-session-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #004E64;
+}
+
+.admin-session-list {
+  list-style-type: none;
+  padding-left: 0;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.admin-session-list-item {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #eee;
+  color: #0A0A0A;
+  font-size: 1rem;
+}

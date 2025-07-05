@@ -1,0 +1,250 @@
+/* ========== Base Layout ========== */
+.receipt-upload-page {
+    padding: 2rem;
+    background-color: #F3F3F3; /* Tertiary */
+    color: #0A0A0A; /* Secondary (text) */
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+  }
+  
+  /* ========== Title ========== */
+  .receipt-upload-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #9F0300; /* Primary */
+    margin-bottom: 1rem;
+  }
+
+  /* ========== Instruction Section ========== */
+.receipt-upload-instructions {
+    background-color: #fff;
+    border-left: 4px solid #004E64;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: #0A0A0A;
+    line-height: 1.6;
+  }
+  
+  .receipt-upload-instructions strong {
+    color: #9F0300;
+  }
+  
+  .receipt-upload-instructions em {
+    font-style: italic;
+    color: #004E64;
+  }
+  
+  .receipt-upload-guidelines {
+    margin-top: 0.8rem;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+  }
+  
+  .receipt-upload-guidelines li {
+    margin-bottom: 0.5rem;
+  }
+  
+  
+  /* ========== Controls ========== */
+  .receipt-upload-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .receipt-select-session {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border 0.3s ease;
+  }
+  
+  .receipt-select-session:focus {
+    border-color: #9F0300;
+    outline: none;
+  }
+  
+  .receipt-semester-options {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .receipt-semester-option {
+    font-size: 1rem;
+    cursor: pointer;
+    color: #0A0A0A;
+  }
+  
+  .receipt-semester-option input {
+    margin-right: 0.5rem;
+  }
+  
+  /* ========== Payment Card ========== */
+  .receipt-payment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .receipt-payment-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  }
+  
+  .receipt-payment-title {
+    color: #004E64; /* Teal for header highlight */
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .receipt-payment-amount,
+  .receipt-payment-status,
+  .receipt-payment-account {
+    margin: 0.4rem 0;
+    font-size: 0.98rem;
+  }
+  
+  /* ========== Error / Warning ========== */
+  .receipt-payment-error {
+    color: #C0392B; /* Bright red */
+    background-color: #ffe5e5;
+    padding: 0.75rem;
+    border-left: 4px solid #C0392B;
+    margin-top: 1rem;
+    border-radius: 4px;
+  }
+  
+  /* ========== File Upload Actions ========== */
+  .receipt-upload-action {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .receipt-file-input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+  }
+  
+  .receipt-file-info {
+    font-size: 0.85rem;
+    color: #555;
+  }
+  
+  .receipt-upload-btn {
+    background-color: #9F0300; /* Primary */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .receipt-upload-btn:hover:not(:disabled) {
+    background-color: #6C0000; /* Hover Accent */
+  }
+  
+  .receipt-upload-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* ========== Spinner ========== */
+  .btn-spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* ========== Feedback Messages ========== */
+  .receipt-message {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border-left: 4px solid #004E64; /* Default info */
+    background-color: #f4fefe;
+    border-radius: 4px;
+  }
+  
+  .receipt-message.success {
+    border-left-color: #2ecc71;
+    background-color: #eafaf1;
+    color: #2e7d32;
+  }
+  
+  .receipt-message.error {
+    border-left-color: #C0392B;
+    background-color: #fdecea;
+    color: #922b21;
+  }
+  
+  .receipt-message.info {
+    border-left-color: #004E64;
+    background-color: #f4fefe;
+    color: #004E64;
+  }
+  
+  /* ========== No Payments ========== */
+  .receipt-no-payments {
+    font-style: italic;
+    color: #555;
+    margin-top: 1rem;
+  }
+  
+  /* ========== Responsive Design ========== */
+  @media screen and (max-width: 768px) {
+    .receipt-semester-options {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .receipt-upload-title {
+      font-size: 1.5rem;
+    }
+  
+    .receipt-upload-btn {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .receipt-upload-controls {
+      gap: 0.75rem;
+    }
+  
+    .receipt-select-session,
+    .receipt-file-input {
+      font-size: 0.95rem;
+    }
+  
+    .receipt-semester-option {
+      font-size: 0.95rem;
+    }
+  }
+  
