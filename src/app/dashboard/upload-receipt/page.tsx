@@ -2,6 +2,7 @@
 
 import { useEffect, useState, ChangeEvent } from 'react';
 import api from '@/lib/api';
+import '@/styles/upload-receipt.css';
 
 interface Session {
   _id: string;
@@ -97,22 +98,22 @@ export default function UploadReceipt() {
   };
 
   return (
-    <div className="receipt-upload-page">
-      <h2 className="receipt-upload-title">Payment Receipts upload</h2>
-      <div className="receipt-upload-instructions">
-        Please select a <strong>session</strong> and <strong>semester</strong> to view pending or rejected payments. For each item listed:
-        <ul className="receipt-upload-guidelines">
-          <li>Ensure your receipt file is either a PDF or image format.</li>
-          <li>Maximum file size allowed is <strong>5MB</strong>.</li>
-          <li>If your payment was rejected, re-confirm your transaction and re-upload a valid receipt.</li>
-          <li>Once uploaded, the receipt will be marked as <em>Awaiting approval</em>.</li>
+    <div className="upload-receipt-container">
+      <h2 className="upload-receipt-title">Payment Receipts Upload</h2>
+
+      <div className="upload-receipt-instructions">
+        Please select a <strong>session</strong> and <strong>semester</strong> to view pending or rejected payments.
+        <ul className="upload-guidelines">
+          <li>Ensure your receipt is in PDF or image format.</li>
+          <li>Maximum file size: <strong>5MB</strong>.</li>
+          <li>If rejected, confirm your transaction and re-upload.</li>
+          <li>After uploading, status will change to <em>Awaiting approval</em>.</li>
         </ul>
       </div>
 
-
-      <div className="receipt-upload-controls">
+      <div className="upload-controls">
         <select
-          className="receipt-select-session"
+          className="upload-session-select"
           value={session}
           onChange={e => {
             setSession(e.target.value);
@@ -127,9 +128,9 @@ export default function UploadReceipt() {
         </select>
 
         {session && (
-          <div className="receipt-semester-options">
+          <div className="upload-semester-options">
             {(['first', 'second'] as const).map(s => (
-              <label key={s} className="receipt-semester-option">
+              <label key={s} className="upload-semester-label">
                 <input
                   type="radio"
                   name="semester"
@@ -144,52 +145,49 @@ export default function UploadReceipt() {
         )}
       </div>
 
-      <div className="receipt-payment-list">
+      <div className="upload-payment-list">
         {payments.length === 0 && session && semester && (
-          <p className="receipt-no-payments">No pending or rejected payments found.</p>
+          <p className="upload-no-payments">No pending or rejected payments found.</p>
         )}
 
         {payments.map(p => (
-          <div key={p._id} className="receipt-payment-card">
-            <h4 className="receipt-payment-title">{p.categoryId.title}</h4>
-            <p className="receipt-payment-amount">Total: ₦{p.total}</p>
-            <p className="receipt-payment-status">Status: {p.status}</p>
-            <p className="receipt-payment-account">
-              Account: {p.categoryId.accountName} – {p.categoryId.accountNo} ({p.categoryId.bank})
-            </p>
+          <div key={p._id} className="upload-payment-card">
+            <h4 className="upload-payment-title">{p.categoryId.title}</h4>
+            <p><strong>Total:</strong> ₦{p.total}</p>
+            <p><strong>Status:</strong> {p.status}</p>
+            <p><strong>Account:</strong> {p.categoryId.accountName} • {p.categoryId.accountNo} ({p.categoryId.bank})</p>
 
             {p.status === 'rejected' && (
-              <p className="receipt-payment-error">
-                <strong>Rejected:</strong> Payment was rejected. Confirm the payment and re-upload the receipt.
+              <p className="upload-error-message">
+                <strong>Rejected:</strong> Payment was rejected. Please verify and re-upload.
               </p>
             )}
 
             {(!p.receiptUrl || p.status === 'rejected') && (
-              <div className="receipt-upload-action">
+              <div className="upload-file-action">
                 <input
                   type="file"
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     handleFileChange(p._id, e.target.files?.[0] || null)
                   }
-                  className="receipt-file-input"
+                  className="upload-file-input"
                 />
-                <p className="receipt-file-info">Max size: 5MB (PDF or image)</p>
+                <p className="upload-file-note">PDF or image. Max 5MB.</p>
                 <button
+                  className="upload-btn"
                   onClick={() => handleUpload(p._id)}
-                  className="receipt-upload-btn"
                   disabled={uploading === p._id}
                 >
-                  {uploading === p._id ? (
-                    <span className="btn-spinner" />
-                  ) : (
-                    'Upload Receipt'
-                  )}
+                  {uploading === p._id ? <span className="btn-spinner" /> : 'Upload Receipt'}
                 </button>
               </div>
             )}
 
             {messages[p._id] && (
-              <p className={`receipt-message ${messages[p._id].includes('successfully') ? 'success' : messages[p._id].includes('failed') ? 'error' : 'info'}`}>
+              <p className={`upload-feedback ${
+                messages[p._id].includes('successfully') ? 'success' :
+                messages[p._id].includes('failed') ? 'error' : 'info'
+              }`}>
                 {messages[p._id]}
               </p>
             )}

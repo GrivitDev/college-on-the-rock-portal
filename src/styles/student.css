@@ -1,14 +1,15 @@
 .student-dashboard-container {
   padding: 32px 16px;
   text-align: center;
-  background-color: aliceblue;
+  background-color: var(--color-tertiary);
 }
 
 .student-dashboard-wrapper {
-  max-width: 1700px; /* or 100% for full width, adjust as needed */
+  max-width: 1700px;
   margin: 0 auto;
   box-sizing: border-box;
 }
+
 @media (max-width: 600px) {
   .student-dashboard-wrapper {
     padding: 20px 12px;
@@ -31,7 +32,7 @@
 .student-dashboard-institution {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #9F0300;
+  color: var(--color-primary);
   text-transform: uppercase;
   margin-top: 80px;
 }
@@ -40,13 +41,13 @@
   font-size: 2rem;
   margin-bottom: 24px;
   font-weight: bold;
-  color: #9b0000;
+  color: var(--color-primary);
 }
 
 .student-info {
   margin-bottom: 32px;
   font-size: 1.2rem;
-  color: #333;
+  color: var(--color-secondary);
 }
 
 .student-dashboard-links {
@@ -63,28 +64,27 @@
 
 .student-dashboard-links a {
   display: block;
-  background-color: #fae4dc;
+  background-color: #FFF0F0;
   padding: 14px 20px;
-  border-left: 5px solid #218b00;
+  border-left: 5px solid var(--color-button-alt);
   border-radius: 6px;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.2rem;
-  color: #8f0000;
+  color: var(--color-primary);
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .student-dashboard-links a:hover {
-  background-color: #085e00;
-  color: rgb(206, 187, 187);
-  border-left-color: #00fa21;
+  background-color: var(--color-button-alt);
+  color: #f3f3f3;
+  border-left-color: #00fa21; /* keep for contrast or swap */
   transform: translateX(4px);
 }
 
-
 .logout-button {
-  background-color: #9F0300;
+  background-color: var(--color-primary);
   color: white;
   padding: 12px 28px;
   border: none;
@@ -96,10 +96,9 @@
 }
 
 .logout-button:hover {
-  background-color: #6C0000;
+  background-color: var(--color-hover-accent);
 }
 
-/* Responsiveness */
 @media (max-width: 600px) {
   .student-dashboard-logo {
     width: 120px;
@@ -118,24 +117,24 @@
   }
 }
 
-/* Instructions styling */
+/* Instructions Styling */
 .student-instructions {
-  background-color: #FFF0F0; /* Light pink, matches links bg */
-  border-left: 5px solid #9F0300; /* Primary deep red */
+  background-color: #FFF0F0;
+  border-left: 5px solid var(--color-primary);
   padding: 1.5rem 2rem;
   margin: 2rem auto 3rem auto;
   max-width: 1000px;
   border-radius: 8px;
-  color: #0A0A0A;
+  color: var(--color-secondary);
   font-size: 1.2rem;
   line-height: 1.6;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   text-align: left;
 }
 
 .student-instructions h3 {
   font-size: 1.5rem;
-  color: #9F0300;
+  color: var(--color-primary);
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
@@ -152,17 +151,15 @@
   gap: 0.5rem;
   list-style-position: inside;
   font-weight: 600;
-  color: #333;
+  color: var(--color-secondary);
 }
 
-/* Emoji bullet */
 .student-instructions ol li::marker {
   font-weight: 900;
-  color: #9F0300;
+  color: var(--color-primary);
   font-size: 1.1rem;
 }
 
-/* Responsive tweaks */
 @media (max-width: 600px) {
   .student-instructions {
     padding: 1rem 1.25rem;

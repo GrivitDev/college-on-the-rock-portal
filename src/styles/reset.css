@@ -1,29 +1,31 @@
 .reset-password-page {
-    background-color: #F3F3F3;
+    background-color: var(--color-tertiary);
     min-height: 100vh;
     padding: 2rem 1rem;
-    font-family: 'Segoe UI', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: var(--font-sans);
   }
   
   .reset-password-title {
-    color: #9F0300;
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    font-family: var(--font-serif);
   }
   
   .reset-password-instructions {
     background: #fff;
-    border-left: 4px solid #004E64;
+    border-left: 4px solid var(--color-button-alt);
     padding: 1rem 1.25rem;
     border-radius: 6px;
     font-size: 0.95rem;
-    color: #0A0A0A;
+    color: var(--color-secondary);
     line-height: 1.6;
-    max-width: 500px;
+    max-width: 540px;
     width: 100%;
     margin-bottom: 2rem;
   }
@@ -32,73 +34,85 @@
     background: #fff;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
+    gap: 1.1rem;
+    max-width: 540px;
     width: 100%;
   }
   
   .reset-password-form input {
-    padding: 0.75rem;
+    padding: 0.85rem;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 1rem;
+    font-family: var(--font-sans);
+    transition: border-color 0.3s ease;
   }
   
   .reset-password-form input:focus {
-    border-color: #9F0300;
+    border-color: var(--color-primary);
     outline: none;
+    box-shadow: 0 0 0 2px rgba(159, 3, 0, 0.1);
   }
   
   .reset-password-note {
     font-size: 0.9rem;
-    color: #444;
+    color: #555;
     font-style: italic;
+    margin-top: -0.5rem;
   }
   
   .reset-password-btn {
-    background-color: #9F0300;
+    background-color: var(--color-primary);
     color: #fff;
-    padding: 0.75rem;
+    padding: 0.9rem;
     border: none;
     border-radius: 6px;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
+    font-family: var(--font-sans);
   }
   
   .reset-password-btn:hover:not(:disabled) {
-    background-color: #6C0000;
+    background-color: var(--color-hover-accent);
+  }
+  
+  .reset-password-btn:disabled {
+    background-color: var(--color-primary);
+    opacity: 0.8;
+    cursor: not-allowed;
   }
   
   .reset-password-status {
     font-size: 0.95rem;
-    padding: 0.8rem 1rem;
+    padding: 0.9rem 1rem;
     border-radius: 6px;
     margin-top: 1rem;
   }
   
   .reset-password-status.success {
     background-color: #e6f8ec;
-    color: #004E64;
-    border-left: 4px solid #004E64;
+    color: var(--color-button-alt);
+    border-left: 4px solid var(--color-button-alt);
   }
   
   .reset-password-status.error {
     background-color: #fdecea;
-    color: #C0392B;
-    border-left: 4px solid #C0392B;
+    color: var(--color-error);
+    border-left: 4px solid var(--color-error);
   }
   
   .reset-password-status.info {
     background-color: #f9f9f9;
-    color: #0A0A0A;
-    border-left: 4px solid #004E64;
+    color: var(--color-secondary);
+    border-left: 4px solid var(--color-button-alt);
   }
   
+  /* Spinner */
   .spinner {
     width: 16px;
     height: 16px;
@@ -116,9 +130,27 @@
     }
   }
   
-  .reset-password-btn:disabled {
-    background-color: #9f0300;
-    opacity: 0.8;
-    cursor: not-allowed;
+  /* Mobile */
+  @media (max-width: 480px) {
+    .reset-password-form {
+      padding: 1.5rem;
+    }
+  
+    .reset-password-title {
+      font-size: 1.5rem;
+    }
+  
+    .reset-password-btn,
+    .reset-password-form input {
+      font-size: 0.95rem;
+      padding: 0.75rem;
+    }
+  }
+  
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .reset-password-page {
+      padding-top: 4rem;
+    }
   }
   

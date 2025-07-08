@@ -1,194 +1,203 @@
-/* home.css */
 .home-page {
-    min-height: 100vh;
-    background: #F3F3F3;
-    color: #0A0A0A;
-    display: flex;
+  min-height: 100vh;
+  background: var(--color-tertiary);
+  color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  padding: 2.5rem 1.25rem;
+  padding-top: env(safe-area-inset-top, 2.5rem);
+  padding-bottom: env(safe-area-inset-bottom, 2.5rem);
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.home-header {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.home-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+}
+
+.home-institution {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+
+.home-content {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.home-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--color-secondary);
+  word-wrap: break-word;
+}
+
+.home-description {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.home-btn {
+  font-family: var(--font-sans);
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  max-width: 100%;
+}
+
+.login-btn {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: var(--color-hover-accent);
+}
+
+.register-btn {
+  background-color: var(--color-button-alt);
+  color: white;
+}
+
+.register-btn:hover {
+  background-color: #003848;
+}
+
+/* < 320px — Ultra-small screens */
+@media (max-width: 319px) {
+  .home-title {
+    font-size: 1.25rem;
+  }
+
+  .home-description {
+    font-size: 0.875rem;
+  }
+
+  .home-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .home-logo {
+    max-width: 140px;
+  }
+}
+
+/* 320px - 400px — Small phones */
+@media (min-width: 320px) and (max-width: 400px) {
+  .home-title {
+    font-size: 1.5rem;
+  }
+
+  .home-description {
+    font-size: 0.95rem;
+  }
+
+  .home-btn {
+    font-size: 0.95rem;
+    padding: 0.625rem 1.25rem;
+  }
+
+  .home-logo {
+    max-width: 180px;
+  }
+}
+
+/* 401px - 768px — Phones/Tablets */
+@media (min-width: 401px) and (max-width: 768px) {
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-description {
+    font-size: 1rem;
+  }
+
+  .home-logo {
+    max-width: 260px;
+  }
+
+  .home-buttons {
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 40px 20px;
-    padding-top: env(safe-area-inset-top, 40px);
-    padding-bottom: env(safe-area-inset-bottom, 40px);
-    text-align: center;
   }
-  
-  .home-header {
-    margin-bottom: 40px;
+}
+
+/* 769px - 1024px — Tablets & Small Laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home-title {
+    font-size: 2.2rem;
   }
-  
+
+  .home-description {
+    font-size: 1.05rem;
+  }
+
   .home-logo {
-    display: block;
-    margin: 0 auto 0px;
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+    max-width: 440px;
   }
-  
-  .home-institution {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #9F0300;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    word-break: break-word;
-    line-height: 1.4;
-  }
-  
-  .home-content {
-    max-width: 640px;
-    width: 100%;
-  }
-  
+}
+
+/* >= 1025px — Desktops */
+@media (min-width: 1025px) {
   .home-title {
     font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: #0A0A0A;
   }
-  
+
   .home-description {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 30px;
+    font-size: 1.15rem;
   }
-  
+
   .home-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 20px;
+    flex-direction: row;
+    justify-content: center;
   }
-  
-  .home-btn {
-    padding: 14px 28px;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s ease;
-    min-width: 150px;
+
+  .home-logo {
+    max-width: 520px;
   }
-  
-  .login-btn {
-    background-color: #9F0300;
-    color: white;
-  }
-  
-  .login-btn:hover {
-    background-color: #6C0000;
-  }
-  
-  .register-btn {
-    background-color: #004E64;
-    color: white;
-  }
-  
-  .register-btn:hover {
-    background-color: #003848;
-  }
-  
-  /* Breakpoint: Super small phones (under 320px) */
-  @media (max-width: 320px) {
-    .home-page {
-      padding: 20px 10px;
-    }
-  
-    .home-title {
-      font-size: 1.25rem;
-    }
-  
-    .home-description {
-      font-size: 0.9rem;
-    }
-  
-    .home-btn {
-      font-size: 0.85rem;
-      padding: 8px 16px;
-    }
-  
-    .home-logo {
-      max-width: 160px;
-    }
-  }
-  
-  /* Small phones (320px - 400px) */
-  @media (min-width: 321px) and (max-width: 400px) {
-    .home-title {
-      font-size: 1.5rem;
-    }
-  
-    .home-description {
-      font-size: 0.95rem;
-    }
-  
-    .home-btn {
-      padding: 10px 20px;
-      font-size: 0.95rem;
-    }
-  
-    .home-logo {
-      max-width: 200px;
-    }
-  }
-  
-  /* Medium phones and tablets (401px - 768px) */
-  @media (min-width: 401px) and (max-width: 768px) {
-    .home-title {
-      font-size: 2rem;
-    }
-  
-    .home-description {
-      font-size: 1rem;
-    }
-  
-    .home-logo {
-      max-width: 280px;
-    }
-  
-    .home-buttons {
-      flex-direction: column;
-    }
-  }
-  
-  /* Tablets and small laptops (769px - 1024px) */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .home-logo {
-      max-width: 440px;
-    }
-  
-    .home-title {
-      font-size: 2.2rem;
-    }
-  
-    .home-description {
-      font-size: 1.05rem;
-    }
-  }
-  
-  /* Larger screens and desktops (1025px and above) */
-  @media (min-width: 1025px) {
-    .home-logo {
-      max-width: 520px;
-    }
-  
-    .home-title {
-      font-size: 2.5rem;
-    }
-  
-    .home-description {
-      font-size: 1.15rem;
-    }
-  
-    .home-buttons {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
-  
+}

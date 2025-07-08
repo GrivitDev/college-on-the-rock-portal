@@ -1,260 +1,209 @@
-/* ========== Page Wrapper ========== */
 .payment-history-page {
-    padding: 2rem;
-    background-color: #F3F3F3;
-    color: #0A0A0A;
-    font-family: 'Segoe UI', sans-serif;
-    min-height: 100vh;
-  }
-  
-  /* ========== Title ========== */
-  .payment-history-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #9F0300;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* ========== Controls ========== */
-  .payment-history-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .payment-history-select {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-    transition: border 0.3s ease;
-  }
-  
-  .payment-history-select:focus {
-    border-color: #9F0300;
-    outline: none;
-  }
-  
-  /* ========== Semester Options ========== */
-  .payment-history-semesters {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .payment-history-semester-option {
-    font-size: 1rem;
-    color: #0A0A0A;
-    cursor: pointer;
-  }
-  
-  .payment-history-semester-option input {
-    margin-right: 0.5rem;
-  }
-  
-  /* ========== List Section ========== */
-  .payment-history-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .payment-history-card {
-    background-color: #fff;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  }
-  
-  .payment-history-category {
-    font-size: 1.1rem;
-    color: #004E64;
-    margin-bottom: 0.75rem;
-  }
-  
-  .payment-history-status-message {
-    margin-top: 0.5rem;
-    font-size: 0.95rem;
-    color: #555;
-  }
-  
-  /* ========== Download Link ========== */
-  .receipt-download-link {
-    display: inline-block;
-    margin-top: 0.6rem;
-    color: #004E64;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-  
-  /* ========== Status Variants ========== */
-  .status-approved {
-    border-left: 4px solid #2ecc71;
-  }
-  
-  .status-rejected {
-    border-left: 4px solid #C0392B;
-  }
-  
-  .status-pending {
-    border-left: 4px solid #f1c40f;
-  }
-  
-  .status-waiting_approval {
-    border-left: 4px solid #3498db;
-  }
-  
-  /* ========== Print Button ========== */
-  .payment-history-print-btn {
-    margin-top: 2rem;
-    background-color: #9F0300;
-    color: #fff;
-    padding: 0.75rem 1.25rem;
-    font-weight: bold;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .payment-history-print-btn:hover:not(:disabled) {
-    background-color: #6C0000;
-  }
-  
-  .payment-history-print-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* ========== Spinner ========== */
-  .btn-spinner {
-    width: 18px;
-    height: 18px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #fff;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* ========== Error & Info ========== */
-  .payment-history-error {
-    color: #C0392B;
-    margin-top: 1rem;
-    font-weight: 500;
-  }
-  
-  .payment-history-empty {
-    font-style: italic;
-    color: #555;
-  }
-  
-  /* ========== Loading ========== */
-  .loading-text {
-    font-style: italic;
-    color: #004E64;
-    font-size: 0.95rem;
-  }
-  
-  /* ========== Modal Overlay ========== */
-  .payment-history-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.45);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-  
-  /* ========== Modal Box ========== */
-  .payment-history-modal-box {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    color: #0A0A0A;
-  }
-  
-  .payment-history-modal-box h3 {
-    color: #004E64;
-    margin-bottom: 1rem;
-  }
-  
-  .modal-actions {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .modal-actions button {
-    background-color: #004E64;
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-  
-  .modal-actions button:hover:not(:disabled) {
-    background-color: #003644;
-  }
-  
-  .modal-actions .cancel-btn {
-    background-color: #C0392B;
-  }
-  
-  .modal-actions .cancel-btn:hover:not(:disabled) {
-    background-color: #A93226;
-  }
-  
-  /* ========== Responsiveness ========== */
-  @media screen and (max-width: 768px) {
-    .payment-history-semesters {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    .payment-history-title {
-      font-size: 1.5rem;
-    }
-  
-    .payment-history-print-btn {
-      width: 100%;
-    }
-  
-    .modal-actions {
-      flex-direction: column;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .payment-history-select {
-      font-size: 0.95rem;
-    }
-  
-    .payment-history-semester-option {
-      font-size: 0.95rem;
-    }
-  }
-  
+  padding: 2rem;
+  background-color: var(--color-tertiary);
+  color: var(--color-secondary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+.payment-history-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.payment-history-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.payment-history-select {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border 0.3s ease;
+}
+
+.payment-history-select:focus {
+  border-color: var(--color-primary);
+}
+
+.payment-history-semesters {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.payment-history-semester-option {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.payment-history-semester-option input {
+  margin-right: 0.5rem;
+}
+
+.payment-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-history-card {
+  background-color: #fff;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.payment-history-category {
+  font-size: 1.1rem;
+  color: var(--color-button-alt);
+  margin-bottom: 0.75rem;
+}
+
+.payment-history-status-message {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+}
+
+.receipt-download-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: var(--color-button-alt);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.status-approved { border-left: 4px solid #2ecc71; }
+.status-rejected { border-left: 4px solid var(--color-error); }
+.status-pending { border-left: 4px solid #f1c40f; }
+.status-waiting_approval { border-left: 4px solid #3498db; }
+
+.payment-history-print-btn {
+  margin-top: 2rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.payment-history-print-btn:hover:not(:disabled) {
+  background-color: var(--color-hover-accent);
+}
+
+.payment-history-print-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.payment-history-error {
+  color: var(--color-error);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.payment-history-empty {
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+.loading-text {
+  font-style: italic;
+  color: var(--color-button-alt);
+  font-size: 0.95rem;
+}
+
+.payment-history-modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.payment-history-modal-box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  color: var(--color-secondary);
+}
+
+.payment-history-modal-box h3 {
+  color: var(--color-button-alt);
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.modal-actions button {
+  background-color: var(--color-button-alt);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.modal-actions button:hover:not(:disabled) {
+  background-color: #003644;
+}
+
+.modal-actions .cancel-btn {
+  background-color: var(--color-error);
+}
+
+.modal-actions .cancel-btn:hover:not(:disabled) {
+  background-color: #A93226;
+}
+
+@media (max-width: 768px) {
+  .payment-history-semesters { flex-direction: column; gap: 1rem; }
+  .payment-history-title { font-size: 1.5rem; }
+  .payment-history-print-btn { width: 100%; }
+  .modal-actions { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .payment-history-select,
+  .payment-history-semester-option { font-size: 0.95rem; }
+}

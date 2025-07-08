@@ -25,7 +25,6 @@ export default function Login() {
       const res = await api.post('/auth/login', form);
       const { token, role } = res.data;
       sessionStorage.setItem('access_token', token);
-
       router.push(role === 'admin' ? '/admin' : '/dashboard');
     } catch (err: unknown) {
       const error = err as AxiosError<{ message?: string }>;

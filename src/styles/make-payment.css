@@ -1,237 +1,240 @@
-/* ========== Base Structure ========== */
+/* ========== Base Layout ========== */
 .payment-page {
-    padding: 2rem;
-    background-color: #F3F3F3; /* Tertiary background */
-    color: #0A0A0A; /* Secondary (text) */
-    font-family: sans-serif;
-    min-height: 100vh;
+  padding: var(--spacing-xl, 2rem);
+  background-color: var(--color-tertiary);
+  color: var(--color-secondary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* ========== Titles & Text ========== */
+.welcome-title {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.payment-instructions {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-lg, 2rem);
+  color: var(--color-secondary);
+}
+
+/* ========== Form Controls ========== */
+.payment-form-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: var(--spacing-lg, 2rem);
+}
+
+.custom-select {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-light, #ccc);
+  border-radius: 6px;
+  background-color: var(--color-white, #fff);
+  font-size: 1rem;
+  appearance: none;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.custom-select:focus {
+  border-color: var(--color-primary);
+}
+
+/* ========== Semester Radio Buttons ========== */
+.semester-options {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.radio-option {
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+
+.radio-option input {
+  margin-right: 0.4rem;
+}
+
+/* ========== Payment Details Section ========== */
+.payment-details-box {
+  padding: 1.5rem;
+  border: 1px solid var(--color-border-light, #ddd);
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--color-box-shadow, rgba(0, 0, 0, 0.06));
+  margin-bottom: var(--spacing-lg, 2rem);
+}
+
+.payment-details-box h4 {
+  margin-bottom: 1rem;
+  color: var(--color-button-alt);
+}
+
+.payment-details-box ul {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
+.payment-details-box li {
+  margin-bottom: 0.4rem;
+}
+
+/* ========== Initiate Button ========== */
+.initiate-btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.initiate-btn:hover:not(:disabled) {
+  background-color: var(--color-hover-accent);
+}
+
+.initiate-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ========== Spinner ========== */
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--color-white);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
-  /* ========== Title and Instruction ========== */
-  .welcome-title {
-    font-size: 1.8rem;
-    color: #9F0300; /* Primary */
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .payment-instructions {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    color: #0A0A0A;
-  }
-  
-  /* ========== Form Controls ========== */
-  .payment-form-controls {
-    display: flex;
+}
+
+/* ========== Message Box ========== */
+.payment-message-box {
+  background-color: var(--color-white);
+  border-left: 4px solid var(--color-button-alt);
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+/* ========== Modal Overlay ========== */
+.modal-overlay-payment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ========== Modal Box ========== */
+.modal-payment-box {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  color: var(--color-secondary);
+}
+
+.modal-payment-box h3 {
+  color: var(--color-button-alt);
+  margin-bottom: 1rem;
+}
+
+.modal-payment-box ul {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
+.modal-payment-box li {
+  margin-bottom: 0.5rem;
+}
+
+.summary-payment-note {
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  color: #444;
+}
+
+/* ========== Modal Button ========== */
+.modal-payment-btn {
+  margin-top: 1.5rem;
+  background-color: var(--color-button-alt);
+  color: var(--color-white);
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.modal-payment-btn:hover:not(:disabled) {
+  background-color: #003644;
+}
+
+.modal-payment-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ========== Responsive Design ========== */
+@media screen and (max-width: 768px) {
+  .semester-options {
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 2rem;
   }
-  
-  .custom-select {
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: white;
-    font-size: 1rem;
-    appearance: none;
-    outline: none;
-    transition: border 0.3s ease;
+
+  .welcome-title {
+    font-size: 1.4rem;
   }
-  
-  .custom-select:focus {
-    border-color: #9F0300;
-  }
-  
-  /* ========== Semester Radio Buttons ========== */
-  .semester-options {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .radio-option {
-    font-size: 1rem;
-    cursor: pointer;
-    color: #0A0A0A;
-  }
-  
-  .radio-option input {
-    margin-right: 0.4rem;
-  }
-  
-  /* ========== Payment Details Section ========== */
-  .payment-details-box {
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    margin-bottom: 2rem;
-  }
-  
-  .payment-details-box h4 {
-    margin-bottom: 1rem;
-    color: #004E64;
-  }
-  
-  .payment-details-box ul {
-    margin: 1rem 0;
-    padding-left: 1.2rem;
-  }
-  
-  .payment-details-box li {
-    margin-bottom: 0.4rem;
-  }
-  
-  /* ========== Initiate Button ========== */
-  .initiate-btn {
-    background-color: #9F0300; /* Primary */
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    font-weight: bold;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .initiate-btn:hover:not(:disabled) {
-    background-color: #6C0000; /* Hover Accent */
-  }
-  
-  .initiate-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* ========== Spinner ========== */
-  .btn-spinner {
-    width: 18px;
-    height: 18px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #fff;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  /* ========== Message ========== */
-  .payment-message-box {
-    background-color: #fff;
-    border-left: 4px solid #004E64;
-    padding: 1rem;
-    margin-top: 1rem;
-    font-size: 1rem;
-    border-radius: 4px;
-  }
-  
-  /* ========== Modal ========== */
-  .modal-overlay-payment {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.45);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-  
+
   .modal-payment-box {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    text-align: left;
-    color: #0A0A0A;
+    padding: 1.5rem;
   }
-  
-  .modal-payment-box h3 {
-    color: #004E64;
-    margin-bottom: 1rem;
-  }
-  
-  .modal-payment-box ul {
-    margin: 1rem 0;
-    padding-left: 1.2rem;
-  }
-  
-  .modal-payment-box li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .summary-payment-note {
-    font-style: italic;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    color: #444;
-  }
-  
-  /* ========== Modal Button ========== */
+
+  .initiate-btn,
   .modal-payment-btn {
-    margin-top: 1.5rem;
-    background-color: #004E64; /* Button Alternate */
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease;
+    width: 100%;
   }
-  
-  .modal-payment-btn:hover:not(:disabled) {
-    background-color: #003644;
+}
+
+@media screen and (max-width: 480px) {
+  .payment-form-controls {
+    gap: 0.75rem;
   }
-  
-  .modal-payment-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+
+  .custom-select {
+    font-size: 0.95rem;
   }
-  
-  /* ========== Responsiveness ========== */
-  @media screen and (max-width: 768px) {
-    .semester-options {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    .welcome-title {
-      font-size: 1.4rem;
-    }
-  
-    .modal-payment-box {
-      padding: 1.5rem;
-    }
-  
-    .initiate-btn, .modal-payment-btn {
-      width: 100%;
-    }
+
+  .radio-option {
+    font-size: 0.95rem;
   }
-  
-  @media screen and (max-width: 480px) {
-    .payment-form-controls {
-      gap: 0.75rem;
-    }
-  
-    .custom-select {
-      font-size: 0.95rem;
-    }
-  
-    .radio-option {
-      font-size: 0.95rem;
-    }
-  }
-  
+}

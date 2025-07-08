@@ -90,7 +90,7 @@ export default function ResetPassword() {
         />
 
         <p className="reset-password-note">
-          Your password should contain both letters and numbers for security, and make sure they are up to 8 characters.
+          Your password should contain both letters and numbers for security, and must be at least 8 characters long.
         </p>
 
         <input
@@ -119,7 +119,8 @@ export default function ResetPassword() {
             className={`reset-password-status ${
               message.toLowerCase().includes('success')
                 ? 'success'
-                : message.toLowerCase().includes('fail')
+                : message.toLowerCase().includes('fail') ||
+                  message.toLowerCase().includes('error')
                 ? 'error'
                 : 'info'
             }`}

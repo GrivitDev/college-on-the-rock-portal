@@ -1,153 +1,133 @@
-/* register.css */
-
 .register-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 540px;
+  margin: 6rem auto 4rem;
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-sans);
+}
+
+.register-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif);
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.register-form input {
+  padding: 0.9rem 1.1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: var(--font-sans);
+}
+
+.register-form input:focus {
+  border-color: var(--color-button-alt);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 78, 100, 0.2);
+}
+
+.register-form button {
+  padding: 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.register-form button:hover {
+  background-color: var(--color-hover-accent);
+}
+
+.register-form button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.register-status-msg {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-error);
+  font-family: var(--font-sans);
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
+}
+
+/* Mobile: ≤ 480px */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 2rem 1.25rem;
+    margin: 4rem 1rem;
+  }
+
   .register-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #9F0300;
-    margin-bottom: 24px;
+    font-size: 1.5rem;
   }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  
-  .register-form input {
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .register-form input:focus {
-    border-color: #004E64;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 78, 100, 0.2);
-  }
-  
+
+  .register-form input,
   .register-form button {
-    padding: 14px;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: #9F0300;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .register-form button:hover {
-    background-color: #6C0000;
-  }
-  
-  .register-status-msg {
-    margin-top: 16px;
-    text-align: center;
     font-size: 0.95rem;
-    color: #C0392B;
+    padding: 0.75rem;
   }
-  
-  /* Full responsiveness */
-  @media (max-width: 768px) {
-    .register-container {
-      padding: 30px 16px;
-      border-radius: 10px;
-    }
-  
-    .register-title {
-      font-size: 1.7rem;
-    }
-  
-    .register-form input {
-      font-size: 0.95rem;
-      padding: 10px 14px;
-    }
-  
-    .register-form button {
-      font-size: 0.95rem;
-      padding: 12px;
-    }
+}
+
+/* Tablets: 481px – 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .register-container {
+    padding: 2.5rem 1.75rem;
   }
-  
-  @media (max-width: 400px) {
-    .register-container {
-      padding: 20px 10px;
-    }
-  
-    .register-title {
-      font-size: 1.5rem;
-    }
-  
-    .register-form input,
-    .register-form button {
-      font-size: 0.9rem;
-      padding: 10px;
-    }
+
+  .register-title {
+    font-size: 1.7rem;
   }
-  
-  @media (min-width: 1024px) {
-    .register-container {
-      max-width: 600px;
-    }
-  
-    .register-title {
-      font-size: 2.2rem;
-    }
-  
-    .register-form input {
-      font-size: 1.05rem;
-    }
-  
-    .register-form button {
-      font-size: 1.05rem;
-    }
+}
+
+/* Desktops: ≥ 1024px */
+@media (min-width: 1024px) {
+  .register-container {
+    max-width: 620px;
+    padding: 3.5rem 2.5rem;
   }
-  
- 
-  /* ===== Mobile Adjustments ===== */
-  @media screen and (max-width: 480px) {
-    .reset-password-form {
-      padding: 1.5rem;
-    }
-  
-    .reset-password-title {
-      font-size: 1.4rem;
-    }
+
+  .register-title {
+    font-size: 2.2rem;
   }
-  
-  .spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: #ffffff;
-    border-radius: 50%;
-    display: inline-block;
-    animation: spin 0.6s linear infinite;
-    vertical-align: middle;
+
+  .register-form input,
+  .register-form button {
+    font-size: 1.05rem;
   }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .login-btn:disabled {
-    background-color: #9f0300;
-    opacity: 0.8;
-    cursor: not-allowed;
-  }
-  
+}

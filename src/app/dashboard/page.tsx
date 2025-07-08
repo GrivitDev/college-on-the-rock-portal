@@ -61,31 +61,17 @@ export default function DashboardPage() {
 
         {student && (
           <div className="student-info">
-            <p>
-              <strong>Name:</strong> {student.firstName} {student.lastName}
-            </p>
-            <p>
-              <strong>Level:</strong> {student.level}
-            </p>
-            <p>
-              <strong>Matric No:</strong> {student.matricNo}
-            </p>
-            <p>
-              <strong>Phone:</strong> {student.whatsappNumber}
-            </p>
+            <p><strong>Name:</strong> {student.firstName} {student.lastName}</p>
+            <p><strong>Level:</strong> {student.level}</p>
+            <p><strong>Matric No:</strong> {student.matricNo}</p>
+            <p><strong>Phone:</strong> {student.whatsappNumber}</p>
           </div>
         )}
 
         <ul className="student-dashboard-links">
-          <li>
-            <a href="/dashboard/make-payment">Make a Payment</a>
-          </li>
-          <li>
-            <a href="/dashboard/upload-receipt">Upload Receipt</a>
-          </li>
-          <li>
-            <a href="/dashboard/payment-history">View Payment History</a>
-          </li>
+          <li><a href="/dashboard/make-payment">Make a Payment</a></li>
+          <li><a href="/dashboard/upload-receipt">Upload Receipt</a></li>
+          <li><a href="/dashboard/payment-history">View Payment History</a></li>
         </ul>
 
         <div className="student-instructions" role="region" aria-label="Student instructions">
@@ -105,9 +91,7 @@ export default function DashboardPage() {
           </ol>
         </div>
 
-        <button onClick={handleLogout} className="logout-button">
-          Logout
-        </button>
+        <button onClick={handleLogout} className="logout-button">Logout</button>
       </div>
     </div>
   );

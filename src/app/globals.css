@@ -1,6 +1,16 @@
-
 /* === Root Theme Variables === */
 :root {
+  --color-primary: #9F0300;
+  --color-secondary: #0A0A0A;
+  --color-tertiary: #F3F3F3;
+  --color-button-alt: #004E64;
+  --color-hover-accent: #6C0000;
+  --color-error: #C0392B;
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-serif: var(--font-playfair), Georgia, 'Times New Roman', serif;
+
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -19,25 +29,25 @@
 }
 
 /* === Base Styling === */
-html {
+html,
+body {
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   font-size: 16px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 600px) {
   html {
     font-size: 15px;
   }
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* === Main Layout === */
@@ -47,20 +57,39 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
 }
 
 .page-wrapper {
   flex: 1;
   width: 100%;
   margin: 0 auto;
+  padding: 1rem;
   box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding: 0.75rem;
+  }
 }
 
 /* === Footer Styling === */
 .home-footer {
   text-align: center;
-  font-size: clamp(0.85rem, 0.9vw, 1rem);
+  font-size: clamp(1rem, 0.9vw, 1rem);
+  font-family: var(--font-sans);
   color: #555;
-  background-color: #F3F3F3;
+  padding: 1.5rem 1rem;
+  background-color: var(--color-tertiary);
   border-top: 1px solid #eee;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .home-footer {
+    font-size: 0.9rem;
+    padding: 1rem 0.75rem;
+  }
 }
