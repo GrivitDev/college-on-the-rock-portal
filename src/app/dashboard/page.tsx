@@ -23,7 +23,7 @@ export default function DashboardPage() {
       return;
     }
 
-    fetch('https://college-on-the-rock.vercel.app/users/me', {
+    fetch('https://bcct-student-body.onrender.com/users/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
