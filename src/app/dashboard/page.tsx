@@ -23,7 +23,7 @@ export default function DashboardPage() {
       return;
     }
 
-    fetch('https://bcct-student-body.onrender.com/users/me', {
+    fetch('${process.env.NEXT_PUBLIC_API_URL}/users/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
