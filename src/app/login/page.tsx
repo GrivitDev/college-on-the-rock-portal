@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AxiosError } from 'axios';
 import api from '@/lib/api';
-import '@/styles/login.css';
 
 export default function Login() {
   const [form, setForm] = useState({ matricNo: '', password: '' });

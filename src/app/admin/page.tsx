@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import '@/styles/admin.css';
 
 export default function AdminDashboard() {
   return (

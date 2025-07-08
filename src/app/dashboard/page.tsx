@@ -23,7 +23,7 @@ export default function DashboardPage() {
       return;
     }
 
-    fetch('http://localhost:5000/users/me', {
+    fetch('https://college-on-the-rock.vercel.app/users/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

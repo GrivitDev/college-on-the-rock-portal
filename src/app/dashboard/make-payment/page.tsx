@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import api from '@/lib/api';
-import '@/styles/make-payment.css';
 
 interface Session { _id: string; sessionTitle: string }
 interface Category {

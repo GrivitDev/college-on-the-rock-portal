@@ -2,7 +2,6 @@
 
 import { useEffect, useState, ChangeEvent } from 'react';
 import api from '@/lib/api';
-import '@/styles/upload-receipt.css';
 
 interface Session {
   _id: string;
