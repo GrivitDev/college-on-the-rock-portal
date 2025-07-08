@@ -5,13 +5,12 @@ import { useRouter } from 'next/navigation';
 import { AxiosError } from 'axios';
 import api from '@/lib/api';
 import '@/styles/login.css';
-import { useLoader } from '@/contexts/LoaderContext';
 
 export default function Login() {
   const [form, setForm] = useState({ matricNo: '', password: '' });
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { showLoader, hideLoader } = useLoader();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,7 +18,7 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    showLoader();
+    setIsLoading(true);
     setMessage('');
 
     try {
@@ -27,13 +26,13 @@ export default function Login() {
       const { token, role } = res.data;
       sessionStorage.setItem('access_token', token);
 
-      hideLoader(true);
       router.push(role === 'admin' ? '/admin' : '/dashboard');
     } catch (err: unknown) {
-      hideLoader(false);
       const error = err as AxiosError<{ message?: string }>;
       const msg = error?.response?.data?.message || 'Login failed';
       setMessage(msg);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -57,7 +56,11 @@ export default function Login() {
           onChange={handleChange}
           required
         />
-        <button type="submit" className="login-btn">Login</button>
+
+        <button type="submit" className="login-btn" disabled={isLoading}>
+          {isLoading ? <span className="spinner" /> : 'Login'}
+        </button>
+
         {message && <p className="login-status-msg">{message}</p>}
       </form>
 

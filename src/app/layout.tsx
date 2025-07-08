@@ -14,9 +14,7 @@ import "@/styles/payments.css";
 import "@/styles/reciept-viewer.css";
 import "@/styles/expenditure.css";
 import '@/styles/admin-reports.css';
-import '@/styles/Loader.module.css';
-import { LoaderProvider } from "@/contexts/LoaderContext";
-import Loader from "@/components/Loader";
+import '@/styles/reset.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,8 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LoaderProvider>
-          <Loader />
           <div className="main-layout">
             <div className="page-wrapper">
               {children}
@@ -51,7 +47,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               &copy; {new Date().getFullYear()} BCCT Student Body Payment System. All rights reserved.
             </footer>
           </div>
-        </LoaderProvider>
       </body>
     </html>
   );

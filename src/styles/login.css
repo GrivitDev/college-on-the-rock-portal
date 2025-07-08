@@ -156,3 +156,28 @@
     }
   }
   
+  /* Spinner styles */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: style disabled button */
+.register-form button:disabled {
+  background-color: #9f0300;
+  opacity: 0.8;
+  cursor: not-allowed;
+}

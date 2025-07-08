@@ -3,7 +3,6 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
-import { useLoader } from '@/contexts/LoaderContext';
 
 interface RegisterForm {
   firstName: string;
@@ -35,8 +34,8 @@ export default function Register() {
   });
 
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { showLoader, hideLoader } = useLoader();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -63,24 +62,24 @@ export default function Register() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessage('');
-    showLoader();
+    setIsLoading(true);
 
     const validationError = validateForm();
     if (validationError) {
       setMessage(validationError);
-      hideLoader(false);
+      setIsLoading(false);
       return;
     }
 
     try {
       await api.post('/auth/register', form);
       setMessage('Registration successful! Redirecting to login...');
-      hideLoader(true);
       setTimeout(() => router.push('/login'), 1500);
     } catch (err: unknown) {
-      hideLoader(false);
       const error = err as ApiError;
       setMessage(error.response?.data?.message || 'An error occurred during registration.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -110,7 +109,10 @@ export default function Register() {
           />
         ))}
 
-        <button type="submit">Register</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? <span className="spinner" /> : 'Register'}
+        </button>
+
         {message && <p className="register-status-msg">{message}</p>}
       </form>
     </div>

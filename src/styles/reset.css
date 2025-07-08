@@ -1,0 +1,124 @@
+.reset-password-page {
+    background-color: #F3F3F3;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .reset-password-title {
+    color: #9F0300;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .reset-password-instructions {
+    background: #fff;
+    border-left: 4px solid #004E64;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #0A0A0A;
+    line-height: 1.6;
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .reset-password-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .reset-password-form input {
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .reset-password-form input:focus {
+    border-color: #9F0300;
+    outline: none;
+  }
+  
+  .reset-password-note {
+    font-size: 0.9rem;
+    color: #444;
+    font-style: italic;
+  }
+  
+  .reset-password-btn {
+    background-color: #9F0300;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .reset-password-btn:hover:not(:disabled) {
+    background-color: #6C0000;
+  }
+  
+  .reset-password-status {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+  }
+  
+  .reset-password-status.success {
+    background-color: #e6f8ec;
+    color: #004E64;
+    border-left: 4px solid #004E64;
+  }
+  
+  .reset-password-status.error {
+    background-color: #fdecea;
+    color: #C0392B;
+    border-left: 4px solid #C0392B;
+  }
+  
+  .reset-password-status.info {
+    background-color: #f9f9f9;
+    color: #0A0A0A;
+    border-left: 4px solid #004E64;
+  }
+  
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .reset-password-btn:disabled {
+    background-color: #9f0300;
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+  

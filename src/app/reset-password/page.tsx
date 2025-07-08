@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import api from '@/lib/api';
 import { useRouter } from 'next/navigation';
-import { useLoader } from '@/contexts/LoaderContext';
 
 interface ResetPasswordForm {
   matricNo: string;
@@ -31,8 +30,8 @@ export default function ResetPassword() {
   });
 
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { showLoader, hideLoader } = useLoader();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -40,17 +39,19 @@ export default function ResetPassword() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    showLoader();
+    setIsLoading(true);
+    setMessage('');
+
     try {
       const res = await api.post('/auth/reset-password', form);
       setMessage(res.data.message);
-      hideLoader(true);
       setTimeout(() => router.push('/login'), 1500);
     } catch (err: unknown) {
       const error = err as ApiError;
       const msg = error.response?.data?.message || 'Reset failed';
       setMessage(msg);
-      hideLoader(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -109,8 +110,8 @@ export default function ResetPassword() {
           required
         />
 
-        <button type="submit" className="reset-password-btn">
-          Reset Password
+        <button type="submit" className="reset-password-btn" disabled={isLoading}>
+          {isLoading ? <span className="spinner" /> : 'Reset Password'}
         </button>
 
         {message && (
