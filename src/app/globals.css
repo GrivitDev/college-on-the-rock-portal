@@ -17,8 +17,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
+    --background: #121212;
     --foreground: #ededed;
+
+    --color-primary: #ff6659;
+    --color-secondary: #f3f3f3;
+    --color-tertiary: #1E1E1E;
+    --color-button-alt: #4DB6AC;
+    --color-hover-accent: #ff3d3d;
+    --color-error: #ff6b6b;
   }
 
   .home-footer {
@@ -27,6 +34,7 @@
     border-top: 1px solid #333;
   }
 }
+
 
 /* === Base Styling === */
 html,
