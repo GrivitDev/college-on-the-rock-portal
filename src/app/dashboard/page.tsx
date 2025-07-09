@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import api from '@/lib/api';
 
 interface Student {
   firstName: string;
@@ -23,16 +24,13 @@ export default function DashboardPage() {
       return;
     }
 
-    fetch('${process.env.NEXT_PUBLIC_API_URL}/users/me', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error('Unauthorized');
-        return res.json();
+    api
+      .get('/users/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .then((data: Student) => setStudent(data))
+      .then((res) => setStudent(res.data))
       .catch(() => router.push('/login'));
   }, [router]);
 
