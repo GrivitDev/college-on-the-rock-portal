@@ -17,7 +17,7 @@ export default function DashboardPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = sessionStorage.getItem('access_token');
+    const token = localStorage.getItem('access_token');
     if (!token) {
       router.push('/login');
       return;
@@ -37,7 +37,7 @@ export default function DashboardPage() {
   }, [router]);
 
   const handleLogout = () => {
-    sessionStorage.removeItem('access_token');
+    localStorage.removeItem('access_token');
     router.push('/login');
   };
 

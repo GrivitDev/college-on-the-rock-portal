@@ -2,17 +2,17 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL, // ✅ No fallback to localhost
-  withCredentials: false, // ✅ Token is passed via header
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  withCredentials: true, // ✅ Send cookies (JWT) automatically with each request
 });
 
-// ✅ Attach JWT token from sessionStorage to every request
-api.interceptors.request.use(config => {
-  const token = sessionStorage.getItem('access_token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+// Optional: response logging
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('API error:', error?.response?.data || error.message);
+    return Promise.reject(error);
   }
-  return config;
-});
+);
 
 export default api;
