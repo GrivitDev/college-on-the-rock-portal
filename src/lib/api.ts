@@ -3,10 +3,18 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  withCredentials: true, // ✅ Send cookies (JWT) automatically with each request
 });
 
-// Optional: response logging
+// ✅ Attach Authorization header with Bearer token from localStorage
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// ✅ Optional: Log API errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
