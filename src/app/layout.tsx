@@ -38,6 +38,28 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+      openGraph: {
+    title: "BCCT - STUDENT BODY",
+    description: "Raising students on the solid rock of Christ.",
+    url: "https://college-on-the-rock.vercel.app/",
+    siteName: "BCCT",
+    images: [
+      {
+        url: "https://college-on-the-rock.vercel.app/og-image.png",
+        width: 1024,
+        height: 1024,
+        alt: "BCCT Student Body Logo",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "BCCT - STUDENT BODY",
+    description: "Raising students on the solid rock of Christ.",
+    images: ["https://college-on-the-rock.vercel.app/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
