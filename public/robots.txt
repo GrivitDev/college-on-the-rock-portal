@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://college-on-the-rock.vercel.app/sitemap.xml
