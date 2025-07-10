@@ -25,7 +25,6 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://college-on-the-rock.vercel.app/" />
         <meta property="og:image" content="/og-image.png" />
-        <meta name="google-site-verification" content="Hwc2NXTv1A8Hnh-vYN8aJ6y8FzT9ey22xBMRw3fIw-c" />
         <link rel="canonical" href="https://college-on-the-rock.vercel.app/" />
       </Head>
 
