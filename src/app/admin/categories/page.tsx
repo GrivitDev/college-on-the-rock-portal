@@ -279,7 +279,7 @@ export default function AdminCategories() {
           {categories.map(cat => (
             <li key={cat._id} className="admin-categories-list-item">
               <div className="admin-categories-list-details">
-                <strong>{cat.title}</strong> – {cat.session?.sessionTitle} ({cat.semester})
+                <strong>{cat.title}</strong> – {cat.session?.sessionTitle} ({cat.semester}) ({cat.levels})
               </div>
               <div className="admin-categories-list-actions">
                 <button onClick={() => setConfirmDeleteId(cat._id)}>Delete</button>
