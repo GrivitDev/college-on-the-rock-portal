@@ -71,8 +71,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </div>
           <footer className="home-footer">
-            &copy; {new Date().getFullYear()} BCCT Student Body Payment System. All rights reserved.
+            &copy; {new Date().getFullYear()} BCCT Student Body Payment System. All rights reserved. <br />
+            Website by <strong>Grivit</strong> | 📞 <a href="tel:+2348164580712">0816 458 0712</a> | 
+            <a href="https://wa.me/2348164580712" target="_blank" rel="noopener noreferrer" style={{ marginLeft: '0.3rem' }}>
+              WhatsApp
+            </a>
           </footer>
+
         </div>
       </body>
     </html>
