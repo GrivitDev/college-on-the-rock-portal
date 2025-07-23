@@ -1,3 +1,4 @@
+
 .admin-users-page {
     padding: 2rem 1rem;
     background: var(--background);
@@ -22,16 +23,14 @@
   .table-wrapper {
     width: 100%;
     overflow-x: auto;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
   }
   
+  /* Base table style */
   .user-table {
     width: 100%;
-    min-width: 680px;
     border-collapse: collapse;
     font-size: 0.95rem;
-    background-color: #fff;
+    min-width: 600px;
   }
   
   .user-table thead {
@@ -40,15 +39,11 @@
   
   .user-table th,
   .user-table td {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--border-color);
     text-align: left;
     white-space: nowrap;
-  }
-  
-  .user-table th {
-    font-weight: 600;
-    color: var(--text-color);
+    word-break: keep-all;
   }
   
   .user-table tbody tr:nth-child(even) {
@@ -57,41 +52,13 @@
   
   .user-table tbody tr:hover {
     background-color: var(--light-ivory);
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s;
   }
   
-  /* ✅ Filter section */
-  .filter-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  
-  .filter-controls label {
-    font-weight: 500;
-    font-size: 1rem;
-    color: var(--text-color);
-  }
-  
-  .custom-select {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background-color: #fff;
-    color: var(--text-color);
-    min-width: 160px;
-  }
-  
-  /* ✅ Full responsiveness: below 640px */
+  /* ✅ Mobile stack layout below 640px */
   @media (max-width: 640px) {
     .user-table {
       display: block;
-      overflow-x: auto;
-      border-spacing: 0;
     }
   
     .user-table thead {
@@ -106,16 +73,17 @@
   
     .user-table tr {
       display: block;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1rem;
       background-color: var(--off-white);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1rem;
     }
   
     .user-table td {
       display: flex;
       justify-content: space-between;
-      padding: 0.6rem 0;
+      align-items: center;
+      padding: 0.5rem 0;
       border: none;
       border-bottom: 1px solid var(--cream);
     }
@@ -123,19 +91,37 @@
     .user-table td::before {
       content: attr(data-label);
       font-weight: 600;
-      flex: 1;
-      text-align: left;
       color: var(--text-color);
       margin-right: 1rem;
+      flex-basis: 40%;
+      text-align: left;
     }
   
     .user-table td:last-child {
       border-bottom: none;
     }
+  }
   
-    .table-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .filter-controls label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  .custom-select {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #fff;
+    color: var(--text-color);
   }
   

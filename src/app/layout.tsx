@@ -17,6 +17,7 @@ import "@/styles/reciept-viewer.css";
 import "@/styles/expenditure.css";
 import "@/styles/admin-reports.css";
 import "@/styles/reset.css";
+import '@/styles/users.css'
 
 // Font Setup
 const inter = Inter({
