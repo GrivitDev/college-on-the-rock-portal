@@ -10,7 +10,7 @@ interface Category {
   accountNo: string;
   accountName: string;
   bank: string;
-  paymentItems: { name: string; amount: number }[];
+  paymentItems: { name: string; amount: number; description: string }[];
 }
 interface User { firstName: string; lastName: string; level: string }
 interface HistoryEntry {
@@ -183,6 +183,13 @@ export default function MakePayment() {
             ))}
           </ul>
           <p><strong>Total:</strong> ₦{current.paymentItems.reduce((a, b) => a + Number(b.amount), 0)}</p>
+
+            {current.paymentItems[0]?.description && (
+              <p className="category-description">
+                <em>{current.paymentItems[0].description}</em>
+              </p>
+            )}
+
           <button
             disabled={!!blockReason || loading}
             className="initiate-btn"
@@ -209,6 +216,13 @@ export default function MakePayment() {
               ))}
             </ul>
             <p><strong>Total:</strong> ₦{current.paymentItems.reduce((a, b) => a + Number(b.amount), 0)}</p>
+
+              {current.paymentItems[0]?.description && (
+                <p className="category-description">
+                  <em>{current.paymentItems[0].description}</em>
+                </p>
+              )}
+
             <p><strong>Account:</strong> {current.accountName} • {current.accountNo} ({current.bank})</p>
             <p className="summary-payment-note">
               Pay the total amount above, then upload your receipt on the Upload page.
