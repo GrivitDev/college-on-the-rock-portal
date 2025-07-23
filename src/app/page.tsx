@@ -24,7 +24,7 @@ export default function Home() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://college-on-the-rock.vercel.app/" />
-        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image" content="https://college-on-the-rock.vercel.app/og-image.png" />
         <link rel="canonical" href="https://college-on-the-rock.vercel.app/" />
       </Head>
 
