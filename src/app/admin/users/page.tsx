@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import api from '@/lib/api';
+import '@/styles/users.css'
 
 type User = {
   _id: string;
