@@ -100,28 +100,28 @@
     <li>Don’t stay logged in on shared devices.</li>
   </ol>
 
-<div style="background-color: #f8f5f0; padding: 1.5rem; border-radius: 10px; font-family: 'Arial', sans-serif; color: #6b4c3b;">
-  <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #6b4c3b;">📞 MPT Contact Support</h3>
+<div style="background-color: #f8f5f0; padding: 1.5rem; border-radius: 10px; font-family: 'Arial', sans-serif; color: #6b4c3b; font-size: 1rem;">
+  <h3 style="margin-bottom: 1rem;">📲 MPT Contact Support</h3>
   <ul style="list-style: none; padding: 0; margin: 0;">
-    <li style="margin-bottom: 0.75rem;">
-      📲 <a href="https://wa.me/2349132993979" target="_blank" style="color: #6b4c3b; text-decoration: none;">+234 913 299 3979</a> &nbsp;&nbsp;
-      📞 <a href="tel:+2349132993979" style="color: #6b4c3b; text-decoration: none;">Call</a>
+    <li style="margin-bottom: 0.8rem;">
+      📲 <a href="tel:+2349132993979" style="color: #6b4c3b; text-decoration: none;">+234 913 299 3979</a> |
+      <a href="https://wa.me/2349132993979" target="_blank" style="color: #6b4c3b; text-decoration: none;">WhatsApp</a>
     </li>
-    <li style="margin-bottom: 0.75rem;">
-      📲 <a href="https://wa.me/2348099892401" target="_blank" style="color: #6b4c3b; text-decoration: none;">+234 809 989 2401</a> &nbsp;&nbsp;
-      📞 <a href="tel:+2348099892401" style="color: #6b4c3b; text-decoration: none;">Call</a>
+    <li style="margin-bottom: 0.8rem;">
+      📲 <a href="tel:+2348099892401" style="color: #6b4c3b; text-decoration: none;">+234 809 989 2401</a> |
+      <a href="https://wa.me/2348099892401" target="_blank" style="color: #6b4c3b; text-decoration: none;">WhatsApp</a>
     </li>
-    <li style="margin-bottom: 0.75rem;">
-      📲 <a href="https://wa.me/2348121570750" target="_blank" style="color: #6b4c3b; text-decoration: none;">+234 812 157 0750</a> &nbsp;&nbsp;
-      📞 <a href="tel:+2348121570750" style="color: #6b4c3b; text-decoration: none;">Call</a>
+    <li style="margin-bottom: 0.8rem;">
+      📲 <a href="tel:+2348121570750" style="color: #6b4c3b; text-decoration: none;">+234 812 157 0750</a> |
+      <a href="https://wa.me/2348121570750" target="_blank" style="color: #6b4c3b; text-decoration: none;">WhatsApp</a>
     </li>
-    <li style="margin-bottom: 0.75rem;">
-      📲 <a href="https://wa.me/2348135458607" target="_blank" style="color: #6b4c3b; text-decoration: none;">+234 813 545 8607</a> &nbsp;&nbsp;
-      📞 <a href="tel:+2348135458607" style="color: #6b4c3b; text-decoration: none;">Call</a>
+    <li style="margin-bottom: 0.8rem;">
+      📲 <a href="tel:+2348135458607" style="color: #6b4c3b; text-decoration: none;">+234 813 545 8607</a> |
+      <a href="https://wa.me/2348135458607" target="_blank" style="color: #6b4c3b; text-decoration: none;">WhatsApp</a>
     </li>
-    <li style="margin-bottom: 0.75rem;">
-      📲 <a href="https://wa.me/2348148135651" target="_blank" style="color: #6b4c3b; text-decoration: none;">+234 814 813 5651</a> &nbsp;&nbsp;
-      📞 <a href="tel:+2348148135651" style="color: #6b4c3b; text-decoration: none;">Call</a>
+    <li style="margin-bottom: 0.8rem;">
+      📲 <a href="tel:+2348148135651" style="color: #6b4c3b; text-decoration: none;">+234 814 813 5651</a> |
+      <a href="https://wa.me/2348148135651" target="_blank" style="color: #6b4c3b; text-decoration: none;">WhatsApp</a>
     </li>
   </ul>
 </div>
