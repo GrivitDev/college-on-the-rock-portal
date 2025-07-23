@@ -101,13 +101,28 @@
   </ol>
 
 <h3>📞 Support Contact Numbers:</h3>
-<ol>
-  <li><a href="tel:+2349132993979">+234 913 299 3979</a></li>
-  <li><a href="tel:+2348099892401">+234 809 989 2401</a></li>
-  <li><a href="tel:+2348121570750">+234 812 157 0750</a></li>
-  <li><a href="tel:+2348135458607">+234 813 545 8607</a></li>
-  <li><a href="tel:+2348148135651">+234 814 813 5651</a></li>
-</ol>
+    <ul>
+  <li>
+    <a href="tel:+2349132993979">📞 +234 913 299 3979</a> | 
+    <a href="https://wa.me/2349132993979" target="_blank">💬 WhatsApp</a>
+  </li>
+  <li>
+    <a href="tel:+2348099892401">📞 +234 809 989 2401</a> | 
+    <a href="https://wa.me/2348099892401" target="_blank">💬 WhatsApp</a>
+  </li>
+  <li>
+    <a href="tel:+2348121570750">📞 +234 812 157 0750</a> | 
+    <a href="https://wa.me/2348121570750" target="_blank">💬 WhatsApp</a>
+  </li>
+  <li>
+    <a href="tel:+2348135458607">📞 +234 813 545 8607</a> | 
+    <a href="https://wa.me/2348135458607" target="_blank">💬 WhatsApp</a>
+  </li>
+  <li>
+    <a href="tel:+2348148135651">📞 +234 814 813 5651</a> | 
+    <a href="https://wa.me/2348148135651" target="_blank">💬 WhatsApp</a>
+  </li>
+</ul>
           </div>
   
           <button onClick={handleLogout} className="logout-button">Logout</button>
