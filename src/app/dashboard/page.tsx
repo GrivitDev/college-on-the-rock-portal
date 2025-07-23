@@ -114,7 +114,7 @@ export default function DashboardPage() {
                   color: '#6b4c3b',
                 }}
               >
-                MPT Contact Support
+                MPT Contact & Support
               </h3>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {[
