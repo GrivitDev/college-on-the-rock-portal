@@ -21,6 +21,7 @@ export default function AdminDashboard() {
       <h3 className="admin-dashboard-heading">Admin Dashboard</h3>
 
       <ul className="admin-links-list">
+        <li><a href="/admin/users">Registered users</a></li>
         <li><a href="/admin/sessions">Create Academic Session</a></li>
         <li><a href="/admin/categories">Manage Payment Categories</a></li>
         <li><a href="/admin/payments">Approve Payments</a></li>
