@@ -112,7 +112,14 @@ export default function DashboardPage() {
                 '+2348135458607',
                 '+2348148135651',
               ].map((number) => (
-                <li key={number} style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'center' }}>
+                <li
+                  key={number}
+                  style={{
+                    marginBottom: '0.75rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                  } as React.CSSProperties}
+                >
                   {/* Phone icon */}
                   <a
                     href={`tel:${number}`}
