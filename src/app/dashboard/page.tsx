@@ -100,7 +100,6 @@
     <li>Don’t stay logged in on shared devices.</li>
   </ol>
 
-<div style="background-color: #f8f5f0; padding: 1.5rem; border-radius: 10px; font-family: 'Arial', sans-serif; color: #6b4c3b; font-size: 1rem;">
   <h3 style="margin-bottom: 1rem;">📲 MPT Contact Support</h3>
   <ul style="list-style: none; padding: 0; margin: 0;">
     <li style="margin-bottom: 0.8rem;">
@@ -124,7 +123,6 @@
       <a href="https://wa.me/2348148135651" target="_blank" style="color: #6b4c3b; text-decoration: none;">WhatsApp</a>
     </li>
   </ul>
-</div>
           </div>
   
           <button onClick={handleLogout} className="logout-button">Logout</button>
