@@ -1,4 +1,3 @@
-/* adminUsers.css or scoped module */
 
 .admin-users-page {
     padding: 2rem 1rem;
@@ -101,5 +100,28 @@
     .user-table td:last-child {
       border-bottom: none;
     }
+  }
+  
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .filter-controls label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  .custom-select {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #fff;
+    color: var(--text-color);
   }
   
