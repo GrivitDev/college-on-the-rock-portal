@@ -33,35 +33,42 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "BCCT-STUDENT BODY",
+  title: "BCCT Student Portal | College on The Rock",
   description:
-    "Official Student Body Payment Website Bishop Crowther College of Theology",
-  icons: {
-    icon: "/favicon.png",
-  },
-      openGraph: {
-    title: "BCCT - STUDENT BODY",
-    description: "Raising students on the solid rock of Christ.",
+    "Official student payment portal for Bishop Crowther College of Theology, Okenne, Kogi State. Secure platform for student payments, receipts, and Payment records.",
+  keywords: [
+    "BCCT Okenne",
+    "Kogi State",
+    "College on The Rock",
+    "Bishop Crowther college of Theology",
+    "Anglican Theological Seminary",
+    "Church of Nigeria Anglican Communion",
+    "Ajayi Crowther University",
+    "Crowther Graduate Theological Seminary",
+    "Seven Anglican theological Seminaries in Nigeria"
+  ],
+  openGraph: {
+    title: "BCCT Student Portal | College on The Rock",
+    description: "Access the official BCCT student portal to make payments, upload receipts, and manage your Payment records.",
     url: "https://college-on-the-rock.vercel.app/",
-    siteName: "BCCT",
+    type: "website",
     images: [
       {
         url: "https://college-on-the-rock.vercel.app/og-image.png",
         width: 1024,
         height: 1024,
         alt: "BCCT Student Body Logo",
-      },
+      }
     ],
-    type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "BCCT - STUDENT BODY",
-    description: "Raising students on the solid rock of Christ.",
+    title: "BCCT Student Portal | College on The Rock",
+    description: "Access the official BCCT student portal to make payments, upload receipts, and manage your Payment records.",
     images: ["https://college-on-the-rock.vercel.app/og-image.png"],
   },
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

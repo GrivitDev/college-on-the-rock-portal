@@ -1,38 +1,25 @@
 'use client';
 
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | BCCT Student Portal",
+  description: "Official BCCT student portal homepage for secure student payments.",
+};
+
 
 export default function Home() {
+  
   return (
     <>
-      <Head>
-        <title>Bishop Crowther College of Theology, Okenne | Student Portal</title>
-        <meta
-          name="description"
-          content="Official student payment portal for Bishop Crowther College of Theology, Okenne, Kogi State. Secure platform for student payments, receipts, and Payment records."
-        />
-        <meta
-          name="keywords"
-          content="BCCT Okenne, Kogi State, College on The Rock, Bishop Crowther college of Theology, Anglican Theological Seminary, Church of Nigeria Anglican Communion, Ajayi Crowther University, Crowther Graduate Theological Seminary, Seven Anglican theological Seminaries in Nigeria"
-        />
-        <meta property="og:title" content="BCCT Student Portal | College on The Rock" />
-        <meta
-          property="og:description"
-          content="Access the official BCCT student portal to make payments, upload receipts, and manage your Payment records."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://college-on-the-rock.vercel.app/" />
-        <meta property="og:image" content="https://college-on-the-rock.vercel.app/og-image.png" />
-        <link rel="canonical" href="https://college-on-the-rock.vercel.app/" />
-      </Head>
 
       <main className="home-page">
         <header className="home-header">
           <Image
             src="/ondrock.png"
-            alt="BCCT Logo"
+            alt="Bishop Crowther College of Theology Official Logo"
             width={300}
             height={300}
             className="home-logo"
