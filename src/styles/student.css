@@ -10,12 +10,6 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
-  .student-dashboard-wrapper {
-    padding: 10px 6px;
-  }
-}
-
 .student-dashboard-header {
   margin-bottom: 32px;
 }
