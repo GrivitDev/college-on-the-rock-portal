@@ -137,9 +137,11 @@ export default function ReceiptVerifier() {
       {error && <p className="receipt-verifier-message-error">{error}</p>}
 
       {result && (
-        <p className={`receipt-verifier-message-result ${result.valid ? 'valid' : 'invalid'}`}>
-          {result.message}
-        </p>
+        <div className={`receipt-verifier-message-result ${result.valid ? 'valid' : 'invalid'}`}>
+          <pre style={{ whiteSpace: 'pre-wrap', fontSize: '1rem' }}>
+            {result.message}
+          </pre>
+        </div>
       )}
     </div>
   );
