@@ -4,13 +4,18 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import api from '@/lib/api';
 
+interface ReceiptItem {
+  name: string;
+  amount: number;
+}
+
 interface ReceiptResult {
   valid: boolean;
   student: string;
   session: string;
   semester: string;
   total: number;
-  items: any[];
+  items: ReceiptItem[];
   message: string;
 }
 
@@ -30,11 +35,12 @@ export default function ReceiptVerificationResult() {
 
     const verify = async () => {
       try {
-        const res = await api.post('/receipts/verify', { barcodeData });
+        const res = await api.post<ReceiptResult>('/receipts/verify', { barcodeData });
         setResult(res.data);
-      } catch (err: any) {
-        if (err?.response?.data?.message) {
-          setError(err.response.data.message);
+      } catch (err: unknown) {
+        if (typeof err === 'object' && err !== null && 'response' in err) {
+          const e = err as { response?: { data?: { message?: string } } };
+          setError(e.response?.data?.message ?? 'Verification failed.');
         } else if (err instanceof Error) {
           setError(err.message);
         } else {
@@ -80,7 +86,7 @@ export default function ReceiptVerificationResult() {
           <strong>Items:</strong>
           <ul>
             {result.items?.map((item, idx) => (
-              <li key={idx}>{JSON.stringify(item)}</li>
+              <li key={idx}>{item.name} - ₦{item.amount.toLocaleString()}</li>
             ))}
           </ul>
         </div>
