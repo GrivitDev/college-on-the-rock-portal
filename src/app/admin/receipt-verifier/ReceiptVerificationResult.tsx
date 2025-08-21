@@ -1,8 +1,7 @@
-// app/receipts/verify/[id]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import api from '@/lib/api';
 
 interface ReceiptItem {
@@ -26,22 +25,24 @@ interface ReceiptResult {
   message: string;
 }
 
-export default function ReceiptVerificationResult() {
-  const { id } = useParams(); // ✅ Get receiptId directly from URL
+export default function ReceiptVerifierPage() {
+  const searchParams = useSearchParams();
+  const receiptId = searchParams.get('id'); // ✅ Get receiptId from query string
+
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState<ReceiptResult | null>(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!id) {
+    if (!receiptId) {
       setError('No receipt ID provided.');
       setLoading(false);
       return;
     }
 
-    const verify = async () => {
+    const verifyReceipt = async () => {
       try {
-        const res = await api.get<ReceiptResult>(`/receipts/verify/${id}`);
+        const res = await api.post<ReceiptResult>('/receipts/verify', { barcodeData: receiptId });
         setResult(res.data);
       } catch (err) {
         console.error('Receipt verification failed:', err);
@@ -51,8 +52,8 @@ export default function ReceiptVerificationResult() {
       }
     };
 
-    verify();
-  }, [id]);
+    verifyReceipt();
+  }, [receiptId]);
 
   if (loading) return <p style={{ textAlign: 'center' }}>Verifying receipt...</p>;
 
@@ -81,8 +82,7 @@ export default function ReceiptVerificationResult() {
 
       <div style={{ marginTop: '1.5rem', fontSize: '1rem' }}>
         <p>
-          <strong>Student:</strong> {result.student.firstName} {result.student.lastName} (
-          {result.student.matricNo})
+          <strong>Student:</strong> {result.student.firstName} {result.student.lastName} ({result.student.matricNo})
         </p>
         <p>
           <strong>Session:</strong> {result.session.sessionTitle}
