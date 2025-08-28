@@ -160,7 +160,150 @@ export default function AdminReports() {
 
   return (
     <div className="admin-reports-wrapper">
-      {/* ... (no changes above) ... */}
+<h2 className="admin-reports-title">FINANCIAL REPORTS</h2>
+
+      <div className="admin-reports-filters">
+        <select
+          className="admin-reports-filter-select"
+          value={selectedSession}
+          onChange={e => {
+            setSelectedSession(e.target.value);
+            setSelectedSemester('');
+            setSelectedLevel('');
+          }}
+        >
+          <option value="">Select Session</option>
+          {sessions.map(s =>
+            <option key={s._id} value={s._id}>{s.sessionTitle}</option>
+          )}
+        </select>
+
+        {selectedSession && (
+          <select
+            className="admin-reports-filter-select"
+            value={selectedSemester}
+            onChange={e => {
+              setSelectedSemester(e.target.value as 'first' | 'second');
+              setSelectedLevel('');
+            }}
+          >
+            <option value="">Select Semester</option>
+            <option value="first">First Semester</option>
+            <option value="second">Second Semester</option>
+          </select>
+        )}
+
+        {selectedSemester && (
+          <select
+            className="admin-reports-filter-select"
+            value={selectedLevel}
+            onChange={e => setSelectedLevel(e.target.value)}
+          >
+            <option value="">Select Level</option>
+            {['100', '200', '300', '400'].map(l =>
+              <option key={l} value={l}>Level {l}</option>
+            )}
+          </select>
+        )}
+      </div>
+
+      {studentPayments && (
+        <>
+          <h3 className="admin-reports-subtitle">1. Student Payments by Level {selectedLevel}</h3>
+          <div className="admin-reports-table-wrapper">
+            <table className="admin-reports-table admin-reports-table-landscape">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Matric No</th>
+                  {studentPayments.categories.map(cat => <th key={cat}>{cat}</th>)}
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {studentPayments.students.map(st => {
+                  const total = studentPayments.categories.reduce((sum, cat) => sum + (st.payments[cat] || 0), 0);
+                  return (
+                    <tr key={st.matricNo}>
+                      <td>{st.name}</td>
+                      <td>{st.matricNo}</td>
+                      {studentPayments.categories.map(cat =>
+                        <td key={cat}>
+                          {st.payments[cat] ? `₦${st.payments[cat]}` : 'N P'}
+                        </td>
+                      )}
+                      <td><strong>₦{total}</strong></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan={2}><strong>Overall Total</strong></td>
+                  {studentPayments.categories.map(cat => {
+                    const colTotal = studentPayments.students.reduce(
+                      (sum, st) => sum + (st.payments[cat] || 0), 0
+                    );
+                    return <td key={cat}><strong>₦{colTotal}</strong></td>;
+                  })}
+                  <td>
+                    <strong>
+                      ₦{studentPayments.students.reduce((grand, st) =>
+                        grand + studentPayments.categories.reduce((sum, c) => sum + (st.payments[c] || 0), 0),
+                        0
+                      )}
+                    </strong>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <button
+            className="admin-reports-btn"
+            onClick={() => exportReport('student-level')}
+            type="button"
+          >
+            Download PDF (Landscape)
+          </button>
+        </>
+      )}
+
+      {selectedSemester && (
+        <>
+          <h3 className="admin-reports-subtitle">2. Payments by Category</h3>
+          <div className="admin-reports-table-wrapper">
+            <table className="admin-reports-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Students</th>
+                  <th>Total Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categorySummaries.map((c, i) => (
+                  <tr key={i}>
+                    <td>{c.category}</td>
+                    <td>{c.studentCount}</td>
+                    <td>₦{c.totalAmount.toLocaleString()}</td>
+                  </tr>
+                ))}
+                <tr>
+                  <td colSpan={2}><strong>Total</strong></td>
+                  <td><strong>₦{categorySummaries.reduce((sum, c) => sum + c.totalAmount, 0).toLocaleString()}</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button
+            className="admin-reports-btn"
+            onClick={() => exportReport('payment-categories')}
+            type="button"
+          >
+            Download PDF
+          </button>
+        </>
+      )}
 
       {selectedSemester && expenditures.length > 0 && (
         <>
