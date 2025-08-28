@@ -313,12 +313,10 @@ export default function AdminReports() {
               <thead>
                 <tr>
                   <th>Title</th>
+                  <th>Category</th>
                   <th>Qty</th>
                   <th>Price</th>
                   <th>Total</th>
-                  <th>Category</th>
-                  <th>Session</th>
-                  <th>Semester</th>
                   <th>Description</th>
                 </tr>
               </thead>
@@ -326,12 +324,10 @@ export default function AdminReports() {
                 {expenditures.map((e, i) => (
                   <tr key={i}>
                     <td>{e.title}</td>
+                    <td>{e.category?.name || '—'}</td>
                     <td>{e.qty}</td>
                     <td>₦{e.price.toLocaleString()}</td>
                     <td>₦{e.total.toLocaleString()}</td>
-                    <td>{e.category?.name || '—'}</td>
-                    <td>{e.session?.sessionTitle || '—'}</td>
-                    <td>{e.semester}</td>
                     <td>{e.description || '-'}</td>
                   </tr>
                 ))}
