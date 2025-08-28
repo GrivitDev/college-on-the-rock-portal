@@ -99,30 +99,30 @@ const handleSubmit = async (e: React.FormEvent) => {
   setLoading(true);
 
   try {
-    const qty = parseInt(form.qty, 10);
-    const price = parseFloat(form.price);
-    const total = qty * price;
-
     await api.post('/expenditures', {
       title: form.title,
-      qty,
-      price,
-      total, // backend will override, but we send it anyway
+      qty: Number(form.qty),
+      price: Number(form.price),
       session: form.sessionId,
       category: form.categoryId,
       description: form.description,
       semester: form.semester,
+    
     });
 
-    setMessage('Expenditure logged!');
+    alert('Expenditure Logged Successfully!');
+
     setForm({
-      ...form,
       title: '',
       qty: '',
       price: '',
+      sessionId: '',
+      categoryId: '',
       description: '',
+      semester: '',
     });
 
+    // refresh if currently filtered
     if (form.sessionId === filterSession && form.semester === filterSemester) {
       fetchExpenses(form.sessionId, form.semester);
     }
@@ -139,6 +139,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     setLoading(false);
   }
 };
+
 
 
   const addCategory = async () => {
