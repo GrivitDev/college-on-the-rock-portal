@@ -15,7 +15,9 @@ interface Category {
 interface Expense {
   _id: string;
   title: string;
-  amount: number;
+  qty: number;
+  price: number;
+  total: number;
   category: { name: string };
   session: { sessionTitle: string };
   semester: 'first' | 'second';
@@ -27,9 +29,11 @@ interface FormState {
   semester: 'first' | 'second' | '';
   categoryId: string;
   title: string;
-  amount: string;
+  qty: string; 
+  price: string; 
   description: string;
 }
+
 
 export default function AdminExpenditures() {
   const [sessions, setSessions] = useState<Session[]>([]);
@@ -40,9 +44,11 @@ export default function AdminExpenditures() {
     semester: '',
     categoryId: '',
     title: '',
-    amount: '',
+    qty: '',
+    price: '',
     description: '',
   });
+
 
   const [filterSession, setFilterSession] = useState('');
   const [filterSemester, setFilterSemester] = useState('');
@@ -86,39 +92,54 @@ export default function AdminExpenditures() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setMessage('');
-    setLoading(true);
-    try {
-      await api.post('/expenditures', {
-        title: form.title,
-        amount: parseFloat(form.amount),
-        session: form.sessionId,
-        category: form.categoryId,
-        description: form.description,
-        semester: form.semester,
-      });
-      setMessage('Expenditure logged!');
-      setForm({ ...form, title: '', amount: '', description: '' });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError('');
+  setMessage('');
+  setLoading(true);
 
-      if (form.sessionId === filterSession && form.semester === filterSemester) {
-        fetchExpenses(form.sessionId, form.semester);
-      }
-    } catch (err: unknown) {
-      if (typeof err === 'object' && err !== null && 'response' in err) {
-       // @ts-expect-error: Ignore type error due to legacy API mismatch
-        setError(err.response?.data?.message || 'Failed to log expenditure');
-      } else if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('Failed to log expenditure');
-      }
-    } finally {
-      setLoading(false);
+  try {
+    const qty = parseInt(form.qty, 10);
+    const price = parseFloat(form.price);
+    const total = qty * price;
+
+    await api.post('/expenditures', {
+      title: form.title,
+      qty,
+      price,
+      total, // backend will override, but we send it anyway
+      session: form.sessionId,
+      category: form.categoryId,
+      description: form.description,
+      semester: form.semester,
+    });
+
+    setMessage('Expenditure logged!');
+    setForm({
+      ...form,
+      title: '',
+      qty: '',
+      price: '',
+      description: '',
+    });
+
+    if (form.sessionId === filterSession && form.semester === filterSemester) {
+      fetchExpenses(form.sessionId, form.semester);
     }
-  };
+  } catch (err: unknown) {
+    if (typeof err === 'object' && err !== null && 'response' in err) {
+      // @ts-expect-error legacy api mismatch
+      setError(err.response?.data?.message || 'Failed to log expenditure');
+    } else if (err instanceof Error) {
+      setError(err.message);
+    } else {
+      setError('Failed to log expenditure');
+    }
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const addCategory = async () => {
     if (!newCategory.trim()) return;
@@ -204,16 +225,27 @@ export default function AdminExpenditures() {
           required
           className="admin-expenditures-input"
         />
+       <input
+          type="number"
+          placeholder="Quantity"
+          value={form.qty}
+          onChange={(e) => setForm({ ...form, qty: e.target.value })}
+          required
+          className="admin-expenditures-input"
+          min="1"
+        />
+
         <input
           type="number"
-          placeholder="Amount"
-          value={form.amount}
-          onChange={(e) => setForm({ ...form, amount: e.target.value })}
+          placeholder="Price"
+          value={form.price}
+          onChange={(e) => setForm({ ...form, price: e.target.value })}
           required
           className="admin-expenditures-input"
           min="0"
           step="0.01"
         />
+
         <input
           type="text"
           placeholder="Description (optional)"
@@ -280,7 +312,9 @@ export default function AdminExpenditures() {
               <th>Semester</th>
               <th>Title</th>
               <th>Category</th>
-              <th>Amount</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -291,11 +325,14 @@ export default function AdminExpenditures() {
                 <td>{ex.semester === 'first' ? 'First' : 'Second'}</td>
                 <td>{ex.title}</td>
                 <td>{ex.category?.name || '—'}</td>
-                <td>₦{ex.amount}</td>
+                <td>{ex.qty}</td>
+                <td>₦{ex.price.toLocaleString()}</td>
+                <td>₦{ex.total.toLocaleString()}</td>
                 <td>{ex.description || '-'}</td>
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
     </div>
