@@ -76,31 +76,34 @@ export default function PaymentHistory() {
     }
   };
 
-  const handlePrintReceipt = async () => {
-    if (!session || !semester) return;
+const handlePrintTicket = async () => {
+  if (!session || !semester) return;
 
-    try {
-      setDownloading(true);
-      const res = await api.get(`/payments/me/receipt/pdf?session=${session}&semester=${semester}`, {
-        responseType: 'blob',
-      });
+  try {
+    setDownloading(true);
 
-      const blob = new Blob([res.data], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
+    // ✅ Call the ticket endpoint instead of PDF
+    const res = await api.get(
+      `/payments/me/receipt/ticket?session=${session}&semester=${semester}`,
+      { responseType: 'blob' }
+    );
 
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `receipt_${session}_${semester}.pdf`;
-      a.click();
+    const blob = new Blob([res.data], { type: 'image/jpeg' }); // JPEG instead of PDF
+    const url = window.URL.createObjectURL(blob);
 
-      window.URL.revokeObjectURL(url);
-      setShowModal(false);
-    } catch {
-      setError('Error generating receipt. Please try again later.');
-    } finally {
-      setDownloading(false);
-    }
-  };
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ticket_${session}_${semester}.jpg`; // filename
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    setShowModal(false);
+  } catch {
+    setError('Error generating ticket. Please try again later.');
+  } finally {
+    setDownloading(false);
+  }
+};
 
   return (
     <div className="payment-history-page">
@@ -191,11 +194,11 @@ export default function PaymentHistory() {
       {showModal && (
         <div className="payment-history-modal-overlay">
           <div className="payment-history-modal-box">
-            <h3>Generate Consolidated Receipt</h3>
-            <p>This will generate a PDF receipt of all approved payments.</p>
+            <h3>Generate Ticket</h3>
+            <p>This will generate a Tick which will be used to print a PDF receipt of all approved payments on resumption.</p>
             <div className="modal-actions">
-              <button onClick={handlePrintReceipt} disabled={downloading}>
-                {downloading ? 'Generating...' : 'Print'}
+              <button onClick={handlePrintTicket} disabled={downloading}>
+                {downloading ? 'Generating...' : 'generate Ticket'}
               </button>
               <button
                 onClick={() => setShowModal(false)}
