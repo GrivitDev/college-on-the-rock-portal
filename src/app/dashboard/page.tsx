@@ -70,9 +70,9 @@ export default function DashboardPage() {
           }`}
         >
           <li><a href="/dashboard/personal-info">Personal Info</a></li>
-          <li><a href="/dashboard/payments">Payments</a></li>
-          <li><a href="/dashboard/payment-approval">Payment Approval</a></li>
-          <li><a href="/dashboard/history">History & Receipts</a></li>
+          <li><a href="/dashboard/make-payment">Payments</a></li>
+          <li><a href="/dashboard/upload-receipt">Payment Approval</a></li>
+          <li><a href="/dashboard/payment-history">History & Receipts</a></li>
 
           {/* Help with popup */}
           <li className="dashboard-navbar__help-wrapper">

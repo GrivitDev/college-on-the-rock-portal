@@ -213,13 +213,7 @@ export default function AdminStudentsPage() {
               <h3 className="admin-page__assign-title">Assign admin fields</h3>
 
               <label className="admin-page__label">Hostel</label>
-                <select
-                    className="admin-page__select"
-                    value={currentSemester}
-                    onChange={(e) =>
-                        setCurrentSemester(e.target.value as 'first' | 'second' | '')
-                    }
-                >                
+              <select className="admin-page__select" value={hostel} onChange={(e) => setHostel(e.target.value)}>
                 <option value="">-- select hostel --</option>
                 {HOSTELS.map((h) => (
                   <option key={h} value={h}>{h}</option>
@@ -253,7 +247,13 @@ export default function AdminStudentsPage() {
               <input className="admin-page__input" value={currentSession} onChange={(e) => setCurrentSession(e.target.value)} placeholder="Paste session id or leave blank" />
 
               <label className="admin-page__label">Current semester</label>
-              <select className="admin-page__select" value={currentSemester} onChange={(e) => setCurrentSemester(e.target.value as any)}>
+                <select
+                className="admin-page__select"
+                value={currentSemester}
+                onChange={(e) =>
+                    setCurrentSemester(e.target.value as 'first' | 'second' | '')
+                }
+                >   
                 <option value="">-- none --</option>
                 <option value="first">first</option>
                 <option value="second">second</option>
