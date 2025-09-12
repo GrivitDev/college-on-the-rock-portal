@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
+import Image from 'next/image';
 import api from '@/lib/api';
 
 type UserSummary = {
@@ -117,12 +118,12 @@ export default function AdminStudentsPage() {
       return alert('Bunk invalid — expected format 1A..10B (or switch to custom bunk mode)');
     }
 
-    const payload: any = {
-      hostel,
-      bunkCode: bunkCode || undefined,
-      currentSession: currentSession || undefined,
-      currentSemester: currentSemester || undefined,
-    };
+        const payload: Partial<PersonalInfo> = {
+        hostel,
+        bunkCode: bunkCode || undefined,
+        currentSession: currentSession || undefined,
+        currentSemester: currentSemester || undefined,
+        };
 
     setSaving(true);
     try {
@@ -185,7 +186,13 @@ export default function AdminStudentsPage() {
         ) : info ? (
           <div className="admin-page__details-card">
             <div className="admin-page__profile-head">
-              <img src={info.profilePictureUrl || '/default-profile.png'} alt="profile" className="admin-page__profile-pic" />
+                <Image
+                src={info.profilePictureUrl || '/default-profile.png'}
+                alt="profile"
+                width={120}
+                height={120}
+                className="admin-page__profile-pic"
+                />
               <div className="admin-page__profile-meta">
                 <div className="admin-page__profile-name">{selected.firstName} {selected.middleName || ''} {selected.lastName}</div>
                 <div className="admin-page__profile-matric">Matric: {selected.matricNo}</div>
@@ -206,7 +213,13 @@ export default function AdminStudentsPage() {
               <h3 className="admin-page__assign-title">Assign admin fields</h3>
 
               <label className="admin-page__label">Hostel</label>
-              <select className="admin-page__select" value={hostel} onChange={(e) => setHostel(e.target.value)}>
+                <select
+                    className="admin-page__select"
+                    value={currentSemester}
+                    onChange={(e) =>
+                        setCurrentSemester(e.target.value as 'first' | 'second' | '')
+                    }
+                >                
                 <option value="">-- select hostel --</option>
                 {HOSTELS.map((h) => (
                   <option key={h} value={h}>{h}</option>

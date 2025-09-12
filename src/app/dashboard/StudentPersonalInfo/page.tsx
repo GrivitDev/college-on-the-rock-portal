@@ -2,7 +2,8 @@
 
 import { useEffect, useState, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import api from '@/lib/api'; // axios/fetch wrapper with auth token
+import Image from 'next/image'; 
+import api from '@/lib/api'; 
 
 type User = {
   _id: string;
@@ -130,11 +131,14 @@ export default function StudentPersonalInfoPage() {
       {/* Profile Picture & Basic Info */}
       <section className="student-page__profile-block">
         <div className="student-page__avatar-wrap">
-          <img
-            src={info?.profilePictureUrl || '/default-profile.png'}
-            alt="profile"
-            className="student-page__avatar-img"
-          />
+            <div className="student-page__avatar-img-wrap">
+            <Image
+                src={info?.profilePictureUrl || '/default-profile.png'}
+                alt="profile"
+                fill
+                className="student-page__avatar-img"
+            />
+            </div>
           <label className="student-page__avatar-upload-label">
             <input
               type="file"
