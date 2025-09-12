@@ -1,9 +1,16 @@
 'use client';
-  
+
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { FaQuestionCircle } from 'react-icons/fa'; // react-icons for help icon
 import api from '@/lib/api';
+
+// Components (import your other dashboard sections here)
+import HeroSection from './components/StudentCarousel';
+import NewsUpdates from './components/NewsSection';
+import ExecutivesSection from './components/ExecutivesSection';
+import HallOfFamers from './components/HallOfFamers';
 
 interface Student {
   firstName: string;
@@ -11,25 +18,21 @@ interface Student {
   level: string;
   matricNo: string;
   whatsappNumber: string;
+  profilePictureUrl?: string;
 }
 
 export default function DashboardPage() {
   const [student, setStudent] = useState<Student | null>(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');
-    if (!token) {
-      router.push('/login');
-      return;
-    }
+    if (!token) return router.push('/login');
 
     api
-      .get('/users/me', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get('/users/me', { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => setStudent(res.data))
       .catch(() => router.push('/login'));
   }, [router]);
@@ -39,148 +42,101 @@ export default function DashboardPage() {
     router.push('/login');
   };
 
+  const supportNumbers = [
+    '+2349132993979',
+    '+2348099892401',
+    '+2348121570750',
+    '+2348135458607',
+    '+2348148135651',
+  ];
+
   return (
-    <div className="student-dashboard-wrapper">
-      <div className="student-dashboard-container">
-        <header className="student-dashboard-header">
-          <Image
-            src="/logo.png"
-            alt="BCCT Logo"
-            width={200}
-            height={200}
-            className="student-dashboard-logo"
-          />
-          <h2 className="student-dashboard-institution">
-            Bishop Crowther College Of Theology, Okenne, Kogi State
-          </h2>
-        </header>
+    <div className="dashboard-page-wrapper">
+      {/* Navbar */}
+      <nav className="dashboard-navbar">
+        {/* Mobile Hamburger */}
+        <button
+          className="dashboard-navbar__hamburger"
+          onClick={() => setMobileNavOpen(!mobileNavOpen)}
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
 
-        <h2 className="student-dashboard-title">Student Dashboard</h2>
+        {/* Desktop & Mobile Links */}
+        <ul
+          className={`dashboard-navbar__links ${
+            mobileNavOpen ? 'dashboard-navbar__links--open' : ''
+          }`}
+        >
+          <li><a href="/dashboard/personal-info">Personal Info</a></li>
+          <li><a href="/dashboard/payments">Payments</a></li>
+          <li><a href="/dashboard/payment-approval">Payment Approval</a></li>
+          <li><a href="/dashboard/history">History & Receipts</a></li>
 
-        {student && (
-          <div className="student-info">
-            <p><strong>Name:</strong> {student.firstName} {student.lastName}</p>
-            <p><strong>Level:</strong> {student.level}</p>
-            <p><strong>Matric No:</strong> {student.matricNo}</p>
-            <p><strong>Phone:</strong> {student.whatsappNumber}</p>
-          </div>
-        )}
+          {/* Help with popup */}
+          <li className="dashboard-navbar__help-wrapper">
+            <button
+              onClick={() => setHelpOpen(!helpOpen)}
+              onMouseEnter={() => setHelpOpen(true)}
+              onMouseLeave={() => setHelpOpen(false)}
+              className="dashboard-navbar__help-btn"
+            >
+              <FaQuestionCircle size={20} />
+            </button>
+            {helpOpen && (
+              <div className="dashboard-navbar__help-popup">
+                <h4>Support Contacts</h4>
+                <ul>
+                  {supportNumbers.map((num, idx) => (
+                    <li key={idx} className="dashboard-navbar__help-item">
+                      <span>Support {idx + 1}: {num}</span>
+                      <div className="dashboard-navbar__help-actions">
+                        <a href={`tel:${num}`} title="Call">📞</a>
+                        <a
+                          href={`https://wa.me/${num.replace(/\D/g, '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="WhatsApp"
+                        >
+                          💬
+                        </a>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </li>
 
-        <ul className="student-dashboard-links">
-          <li><a href="/dashboard/make-payment">Make a Payment</a></li>
-          <li><a href="/dashboard/upload-receipt">Upload Receipt</a></li>
-          <li><a href="/dashboard/payment-history">View Payment History</a></li>
+          <li>
+            <button onClick={handleLogout} className="dashboard-navbar__logout-btn">
+              Logout
+            </button>
+          </li>
         </ul>
 
-        <div className="student-instructions" role="region" aria-label="Student instructions">
-          <h2>📚 How to Use the Website - Dos &amp; Don&apos;ts</h2>
-           <h3>✅ DOs:</h3>
-          <ol>
-            <li>Select the correct session and semester first.</li>
-            <li>Always initiate payment before sending money.</li>
-            <li>Pay the exact amount for each category.</li>
-            <li>Use only the account number generated for you.</li>
-            <li>Upload each receipt under the correct transaction.</li>
-            <li>Ensure receipts are clear and readable.</li>
-            <li>Check your payment history for updates.</li>
-            <li>Generate receipt only after approval.</li>
-            <li>Contact the Portal Team for help if needed.</li>
-          </ol>
-
-          <h3>❌ DON’Ts:</h3>
-          <ol>
-            <li>Don’t pay without initiating the transaction.</li>
-            <li>Don’t use one receipt for multiple payments.</li>
-            <li>Don’t upload fake or wrong receipts.</li>
-            <li>Don’t share your login with anyone.</li>
-            <li>Don’t use unstable networks during uploads.</li>
-            <li>Don’t delay receipt uploads after payment.</li>
-            <li>Don’t panic over rejections — just re-upload.</li>
-            <li>Don’t use backdoors or unofficial help.</li>
-            <li>Don’t stay logged in on shared devices.</li>
-          </ol>
-
-          <div
-              style={{
-                padding: '1rem',
-                background: '#f8f5f0',
-                borderRadius: '8px',
-              }}
-            >
-              <h3
-                style={{
-                  marginBottom: '1rem',
-                  fontFamily: 'Playfair Display, serif',
-                  color: '#6b4c3b',
-                }}
-              >
-                MPT Contact & Support
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {[
-                  '+2349132993979',
-                  '+2348099892401',
-                  '+2348121570750',
-                  '+2348135458607',
-                  '+2348148135651',
-                ].map((number, index) => (
-                  <li
-                    key={number}
-                    style={{
-                      marginBottom: '0.75rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      fontSize: '16px',
-                      color: '#6b4c3b',
-                      fontFamily: 'Cormorant Garamond, serif',
-                    }}
-                  >
-                    {/* Support name and number */}
-                    <div>
-                      <strong>Support {index + 1}</strong>: {number}
-                    </div>
-
-                    {/* Action icons */}
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                      {/* Phone */}
-                      <a
-                        href={`tel:${number}`}
-                        title="Call"
-                        style={{ fontSize: '18px', textDecoration: 'none' }}
-                      >
-                        📞
-                      </a>
-
-                      {/* WhatsApp */}
-                      <a
-                        href={`https://wa.me/${number.replace(/\D/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="Message on WhatsApp"
-                        style={{ display: 'inline-block', width: '20px', height: '20px' }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 448 512"
-                          fill="#25D366"
-                          style={{ width: '100%', height: '100%' }}
-                        >
-                          <path d="M380.9 97.1C339.3 55.5 282.4 32 221.7 32 104.1 32 7 129.1 7 246.8c0 43.5 11.4 85.9 33 123L0 480l114.2-39.7c35 19.2 74.3 29.4 114.8 29.4 117.6 0 214.7-97.1 214.7-214.7 0-60.7-23.5-117.6-65.1-159.2zM221.7 438c-35.1 0-69.4-9.4-99.4-27.1l-7.1-4.2-67.7 23.5 22.6-70-4.6-7.3c-20.1-31.6-30.7-68.1-30.7-105.1 0-105.2 85.6-190.8 190.8-190.8 51 0 98.9 19.8 134.9 55.8s55.8 83.9 55.8 134.9c0 105.2-85.6 190.8-190.8 190.8zm101.5-138.4c-5.6-2.8-33.3-16.4-38.5-18.3s-8.9-2.8-12.6 2.8-14.4 18.3-17.7 22.1-6.5 4.2-12.1 1.4-23.6-8.7-45-27.8c-16.6-14.8-27.8-33-31-38.6s-.3-8.6 2.1-11.4c2.1-2.8 5.6-7.3 8.4-11s3.7-6.5 5.6-10.9c1.9-4.4.9-8.2-.5-11.4s-12.6-30.2-17.3-41.4c-4.6-11.1-9.3-9.6-12.6-9.8-3.3-.2-7.1-.2-10.9-.2s-10 1.4-15.2 7c-5.2 5.6-19.9 19.5-19.9 47.6s20.4 55.2 23.2 59c2.8 3.7 40.2 61.4 97.4 86.1 13.6 5.9 24.2 9.4 32.5 12s15.6 2.8 21.5 1.7c6.6-1 33.3-13.6 38-26.8 4.7-13.3 4.7-24.7 3.3-27.1z" />
-                        </svg>
-                      </a>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-
-
+        {/* Logo on right */}
+        <div className="dashboard-navbar__logo">
+          <Image src="/logo.png" alt="BCCT Logo" width={60} height={60} />
         </div>
+      </nav>
 
-        <button onClick={handleLogout} className="logout-button">Logout</button>
-      </div>
+      {/* Hero Section */}
+      {student && <HeroSection student={student} />}
+
+      {/* Welcome Address */}
+      <section className="dashboard-welcome-address">
+        <h2>Welcome to Bishop Crowther College of Theology Portal</h2>
+        <p>
+          We are thrilled to have you on board. Here, you can manage your payments, track your academic progress, and stay up to date with all institutional news. Explore the sections below to get started!
+        </p>
+      </section>
+
+      {/* Other Sections */}
+      <NewsUpdates />
+      <ExecutivesSection />
+      <HallOfFamers />
     </div>
   );
 }
