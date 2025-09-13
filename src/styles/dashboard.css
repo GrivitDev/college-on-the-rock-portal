@@ -78,7 +78,7 @@
 .dashboard-navbar__links--open {
   position: absolute;
   top: 60px;
-  margin-left: -50px;
+  margin-left: -20px;
   background: var(--milk);
   width: 180px;
   flex-direction: column;
@@ -87,7 +87,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 16px var(--shadow);
   animation: slideIn 0.3s ease forwards;
-  z-index: 0;
+  z-index: 88;
 }
 
 @keyframes slideIn {
