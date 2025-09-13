@@ -161,7 +161,7 @@
 
 /* Quick Links */
 .stellar-quick-links {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -169,7 +169,7 @@
 
 .stellar-quick-links ul {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -177,8 +177,8 @@
 
 .stellar-quick-links a {
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: bolder;
+  font-size: 1.5rem;
   color: #fff8f0;
   transition: color 0.3s ease, border-bottom 0.3s ease;
   border-bottom: 2px solid transparent;

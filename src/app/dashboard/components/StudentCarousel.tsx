@@ -117,20 +117,6 @@ export default function HeroSection({ student }: HeroSectionProps) {
               )}
             </div>
           </div>
-            {/* Dashboard Quick Links */}
-            <div className="stellar-quick-links">
-            <ul>
-                <li>
-                <a href="/dashboard/make-payment">Payments</a>
-                </li>
-                <li>
-                <a href="/dashboard/upload-receipt">Payment Approval</a>
-                </li>
-                <li>
-                <a href="/dashboard/payment-history">History & Receipts</a>
-                </li>
-            </ul>
-            </div>
 
           {/* Payment Stats */}
           <div className="stellar-payment-stats">
@@ -151,6 +137,17 @@ export default function HeroSection({ student }: HeroSectionProps) {
               <p className="stellar-stat-label">Rejected</p>
             </div>
           </div>
+                      {/* Dashboard Quick Links */}
+            <div className="stellar-quick-links">
+            <ul>
+                <li>
+                <a href="/dashboard/make-payment">Make your Payments</a>
+                </li>
+                <li>
+                <a href="/dashboard/upload-receipt">Upload your recipts</a>
+                </li>
+            </ul>
+            </div>
         </div>
       </div>
     </section>
