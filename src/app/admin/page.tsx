@@ -25,7 +25,6 @@ export default function AdminDashboard() {
         <li><a href="/admin/sessions">Create Academic Session</a></li>
         <li><a href="/admin/categories">Manage Payment Categories</a></li>
         <li><a href="/admin/payments">Approve Payments</a></li>
-        <li><a href="/admin/receipt-verifier">Confirm Receipt</a></li>
         <li><a href="/admin/expenditures">Log Expenditures</a></li>
         <li><a href="/admin/student-management">Student Details Management </a></li>
         <li><a href="/admin/reports">Export Reports</a></li>
