@@ -155,13 +155,13 @@
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s;
+  font-weight: bolder;
+  /* transition: background 0.2s; */
 }
 
-/* .dashboard-navbar__logout-btn:hover {
+.dashboard-navbar__logout-btn:hover {
   background-color: #cc0335;
-} */
+}
 
 /* LOGO */
 .dashboard-navbar__logo {
