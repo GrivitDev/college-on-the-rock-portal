@@ -190,9 +190,8 @@
   }
 
   .stellar-stat-card {
-    flex: 1 1 100px;
-    min-width: 80px;
-    max-height: 40px;
+    flex: 1 1 60px;
+    min-width: 100px;
     padding: 0.4rem;
   }
 
