@@ -29,6 +29,12 @@
   border-radius: 0 0 12px 12px;
 }
 
+.dashboard-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 /* HAMBURGER */
 .dashboard-navbar__hamburger {
   display: flex;
@@ -105,6 +111,22 @@
   }
 }
 
+.dashboard-navbar__help-btn {
+  background: none;
+  border: none;
+  color: var(--burgundy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.dashboard-navbar__help-btn:hover {
+  color: var(--navy);
+}
+
 /* HELP POPUP */
 .dashboard-navbar__help-popup {
   position: absolute;
@@ -147,7 +169,7 @@
 }
 
 /* LOGOUT BUTTON */
-.dashboard-navbar__links li .dashboard-navbar__logout-btn  {
+.dashboard-navbar__actions .dashboard-navbar__logout-btn {
   background-color: var(--burgundy);
   color: var(--milk);
   border: none;
@@ -158,7 +180,7 @@
   transition: background 0.2s;
 }
 
-.dashboard-navbar__logout-btn:hover {
+.dashboard-navbar__actions .dashboard-navbar__logout-btn:hover {
   background-color: #cc0335;
   color: var(--milk);
 }
