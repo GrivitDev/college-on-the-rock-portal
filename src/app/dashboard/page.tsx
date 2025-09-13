@@ -100,7 +100,7 @@ export default function DashboardPage() {
               onClick={() => setHelpOpen(!helpOpen)}
               className="dashboard-navbar__help-btn"
             >
-              <FaQuestionCircle size={50} />
+              <FaQuestionCircle size={35} />
             </button>
             {helpOpen && (
               <div className="dashboard-navbar__help-popup">
