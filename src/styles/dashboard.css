@@ -79,7 +79,6 @@
 .dashboard-navbar__links--open {
   position: absolute;
   top: 60px;
-  right: 1rem;
   background: var(--milk);
   width: 180px;
   flex-direction: column;
