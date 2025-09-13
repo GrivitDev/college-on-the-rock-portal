@@ -117,8 +117,8 @@
   color: var(--burgundy);
   cursor: pointer;
   display: flex;
-  /* align-items: center; */
-  justify-content: center;
+  align-items: center;
+  /* justify-content: center; */
   font-size: 1.2rem;
   transition: color 0.2s;
 }

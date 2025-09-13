@@ -137,21 +137,6 @@ export default function DashboardPage() {
               <MdHistory size={18} /> History & Receipts
             </a>
           </li>
-
-          {/* Keep Help + Logout here too, for sidebar version */}
-          <li>
-            <button
-              onClick={() => setHelpOpen(!helpOpen)}
-              className="dashboard-navbar__help-btn"
-            >
-              <FaQuestionCircle size={20} /> Help
-            </button>
-          </li>
-          <li>
-            <button onClick={handleLogout} className="dashboard-navbar__logout-btn">
-              Logout
-            </button>
-          </li>
         </ul>
 
         {/* Logo on right */}
