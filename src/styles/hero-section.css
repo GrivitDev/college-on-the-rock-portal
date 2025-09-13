@@ -16,7 +16,7 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  margin-left: -50px;
+  margin-left: -55px;
   align-items: center;  
   background: rgba(255, 248, 240, 0.05); 
   backdrop-filter: blur(15px);
@@ -191,9 +191,8 @@
   }
 
   .stellar-stat-card {
-    flex: 2 2 60px;
+    flex: 2 2 40px;
     max-width: 60px;
-    max-height: 70px;
     padding: 0.4rem;
   }
 
