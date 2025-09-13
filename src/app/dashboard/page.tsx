@@ -95,14 +95,12 @@ export default function DashboardPage() {
           {/* Help Icon */}
           <div
             className="dashboard-navbar__help-wrapper"
-            onMouseEnter={() => setHelpOpen(true)}
-            onMouseLeave={() => setHelpOpen(false)}
           >
             <button
               onClick={() => setHelpOpen(!helpOpen)}
               className="dashboard-navbar__help-btn"
             >
-              <FaQuestionCircle size={20} />
+              <FaQuestionCircle size={50} />
             </button>
             {helpOpen && (
               <div className="dashboard-navbar__help-popup">
@@ -136,7 +134,7 @@ export default function DashboardPage() {
             Logout
           </button>
         </div>
-        
+
         {/* Logo on right */}
         <div className="dashboard-navbar__logo">
           <Image src="/logo.png" alt="BCCT Logo" width={60} height={60} />
