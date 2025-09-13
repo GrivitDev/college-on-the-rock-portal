@@ -59,7 +59,6 @@
 .dashboard-navbar__links li a,
 .dashboard-navbar__links li button {
   display: flex;
-  align-items: center;
   gap: 6px;
   color: var(--burgundy);
   font-weight: 500;
@@ -82,13 +81,14 @@
   top: 60px;
   right: 1rem;
   background: var(--milk);
-  width: 220px;
+  width: 180px;
   flex-direction: column;
   padding: 1rem;
   gap: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px var(--shadow);
   animation: slideIn 0.3s ease forwards;
+  z-index: 1;
 }
 
 @keyframes slideIn {
@@ -148,7 +148,7 @@
 }
 
 /* LOGOUT BUTTON */
-.dashboard-navbar__logout-btn {
+.dashboard-navbar__links li .dashboard-navbar__logout-btn  {
   background-color: var(--burgundy);
   color: var(--milk);
   border: none;
@@ -156,11 +156,12 @@
   border-radius: 6px;
   cursor: pointer;
   font-weight: bolder;
-  /* transition: background 0.2s; */
+  transition: background 0.2s;
 }
 
 .dashboard-navbar__logout-btn:hover {
   background-color: #cc0335;
+  color: var(--milk);
 }
 
 /* LOGO */
