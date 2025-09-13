@@ -4,12 +4,10 @@
 
 .stellar-hero-wrapper {
   width: 100%;
-  min-height: 100vh;          /* ensure full screen height */
   padding: 2rem;
   display: flex;
-  align-items: center;        /* vertical center */
-  justify-content: center;    /* horizontal center */
-  background: #800020;        /* burgundy */
+  justify-content: center;
+  background: #800020; /* burgundy */
   position: relative;
   overflow: hidden;
 }
@@ -18,7 +16,9 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  background: rgba(255, 248, 240, 0.05); /* subtle glass effect with milk */
+  margin-left: auto;  
+  margin-right: auto;  
+  background: rgba(255, 248, 240, 0.05); 
   backdrop-filter: blur(15px);
   border-radius: 2rem;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
@@ -26,7 +26,6 @@
   flex-direction: column;
   padding: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  align-items: center;
 }
 
 .stellar-hero-card:hover {
@@ -59,8 +58,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
-  justify-content: center;    /* ✅ center contents instead of pushing apart */
-  width: 100%;                /* ensure it respects parent card width */
+  justify-content: space-between;
 }
 
 /* Profile section */
@@ -174,8 +172,7 @@
 }
 
 @media (max-width: 480px) {
-
-    .stellar-profile-container {
+  .stellar-profile-container {
     flex-direction: column;
     align-items: center;
   }
