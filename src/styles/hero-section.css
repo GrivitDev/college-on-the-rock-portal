@@ -159,6 +159,37 @@
   opacity: 0.8;
 }
 
+/* Quick Links */
+.stellar-quick-links {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.stellar-quick-links ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stellar-quick-links a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff8f0;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.stellar-quick-links a:hover {
+  color: #f0b429; /* golden accent */
+  border-bottom: 2px solid #f0b429;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .stellar-hero-flex {
@@ -198,5 +229,10 @@
 
   .stellar-stat-count {
     font-size: 1.2rem;
+  }
+    .stellar-quick-links ul {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
   }
 }
