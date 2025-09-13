@@ -173,9 +173,6 @@
 }
 
 @media (max-width: 480px) {
-  .stellar-hero-card {
-    max-width: 400px;
-  }
 
     .stellar-profile-container {
     flex-direction: column;
