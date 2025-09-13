@@ -191,9 +191,9 @@
   }
 
   .stellar-stat-card {
-    flex: 1 1 20px;
-    max-width: 20px;
-    padding: 0.4rem;
+    flex: 1 1 100px;
+    min-width: 100px;
+    padding: 0.8rem;
   }
 
   .stellar-stat-count {
