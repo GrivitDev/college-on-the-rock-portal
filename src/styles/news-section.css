@@ -1,0 +1,131 @@
+:root {
+  --burgundy: #800020;
+  --navy: #001f54;
+  --milk: #fdfdf5;
+}
+
+/* SECTION WRAPPER */
+.news-section-wrapper {
+  padding: 2rem 1rem;
+  background: var(--milk);
+  text-align: center;
+}
+
+.news-section-title {
+  font-size: 1.8rem;
+  color: var(--burgundy);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* NO ITEMS */
+.news-no-items {
+  font-style: italic;
+  color: #666;
+}
+
+/* NEWS CARDS */
+.news-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* CARD ITEM */
+.news-card-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-card-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* CARD HEADER */
+.news-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.news-card-title-wrapper {
+  text-align: left;
+}
+
+.news-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+}
+
+.news-card-by {
+  font-size: 0.85rem;
+  color: var(--burgundy);
+}
+
+.news-card-image {
+  flex-shrink: 0;
+}
+
+.news-card-thumbnail {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* CARD BODY */
+.news-card-body {
+  padding: 0 1rem 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.news-card-body.expanded {
+  max-height: 500px; /* enough for summary + details */
+}
+
+.news-card-summary {
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin: 0.5rem 0;
+}
+
+.news-card-details {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.news-card-date {
+  font-size: 0.85rem;
+  color: var(--burgundy);
+  margin-top: 0.5rem;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 600px) {
+  .news-cards-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .news-card-item {
+    min-width: 260px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .news-section-title {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,154 @@
+:root {
+  --burgundy: #800020;
+  --navy: #001f54;
+  --milk: #fdfdf5;
+}
+
+/* Global resets */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--milk);
+  color: var(--navy);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* NAVBAR */
+.dashboard-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--burgundy);
+  color: var(--milk);
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.dashboard-navbar__hamburger {
+  font-size: 2rem;
+  color: var(--milk);
+  display: none;
+  background: transparent;
+}
+
+.dashboard-navbar__links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.dashboard-navbar__links li a,
+.dashboard-navbar__logout-btn {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.dashboard-navbar__links li a:hover,
+.dashboard-navbar__logout-btn:hover {
+  background: var(--navy);
+  color: var(--milk);
+}
+
+/* Help popup */
+.dashboard-navbar__help-wrapper {
+  position: relative;
+}
+
+.dashboard-navbar__help-popup {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: var(--milk);
+  color: var(--navy);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-width: 250px;
+}
+
+.dashboard-navbar__help-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+
+.dashboard-navbar__help-actions a {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Logo */
+.dashboard-navbar__logo img {
+  border-radius: 50%;
+  border: 2px solid var(--milk);
+}
+
+/* WELCOME SECTION */
+.dashboard-welcome-address {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--navy);
+  color: var(--milk);
+}
+
+.dashboard-welcome-address h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* MOBILE FIRST */
+@media (max-width: 768px) {
+  .dashboard-navbar__hamburger {
+    display: block;
+  }
+
+  .dashboard-navbar__links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    background: var(--burgundy);
+    width: 70%;
+    max-width: 250px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 1rem;
+  }
+
+  .dashboard-navbar__links--open {
+    transform: translateX(0);
+  }
+
+  .dashboard-navbar__links li {
+    margin: 0.5rem 0;
+  }
+
+  .dashboard-welcome-address {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 769px) {
+  .dashboard-navbar__links {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    background: transparent;
+    width: auto;
+  }
+}

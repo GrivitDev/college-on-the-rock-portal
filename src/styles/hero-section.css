@@ -1,0 +1,91 @@
+:root {
+  --burgundy: #800020;
+  --navy: #001f54;
+  --milk: #fdfdf5;
+}
+
+/* HERO SECTION WRAPPER */
+.hero-section-wrapper {
+  background: var(--navy);
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: var(--milk);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* HERO CARD */
+.hero-section-card {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* PROFILE IMAGE */
+.hero-section-image {
+  flex: 0 0 120px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--burgundy);
+}
+
+.hero-profile-picture {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* INFO BLOCK */
+.hero-section-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hero-student-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--milk);
+}
+
+.hero-student-level,
+.hero-student-matric,
+.hero-student-hostel,
+.hero-student-session {
+  font-size: 1rem;
+  margin: 0.1rem 0;
+  color: #fdfdf5cc; /* slightly transparent for subtlety */
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .hero-section-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-section-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-student-name {
+    font-size: 1.4rem;
+  }
+
+  .hero-student-level,
+  .hero-student-matric,
+  .hero-student-hostel,
+  .hero-student-session {
+    font-size: 0.95rem;
+  }
+}

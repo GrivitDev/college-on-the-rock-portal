@@ -1,0 +1,105 @@
+:root {
+  --burgundy: #800020;
+  --navy: #001f54;
+  --milk: #fdfdf5;
+}
+
+/* SECTION WRAPPER */
+.hof-section-wrapper {
+  padding: 2rem 1rem;
+  background: var(--milk);
+  text-align: center;
+}
+
+.hof-section-title {
+  font-size: 1.8rem;
+  color: var(--burgundy);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* NO ITEMS MESSAGE */
+.hof-no-items {
+  font-style: italic;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* GRID / CARDS */
+.hof-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* CARD ITEM */
+.hof-card-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hof-card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+.hof-card-image-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--navy);
+  margin-bottom: 1rem;
+}
+
+.hof-card-image {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* TEXT INFO */
+.hof-card-info {
+  text-align: center;
+}
+
+.hof-card-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.3rem 0;
+  color: var(--burgundy);
+}
+
+.hof-card-description {
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin-top: 0.3rem;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 600px) {
+  .hof-section-title {
+    font-size: 1.5rem;
+  }
+
+  .hof-cards-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .hof-card-item {
+    min-width: 220px;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+}

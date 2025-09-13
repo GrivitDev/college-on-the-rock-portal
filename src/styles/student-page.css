@@ -1,0 +1,187 @@
+:root {
+  --burgundy: #800020;
+  --navy: #001f54;
+  --milk: #fdfdf5;
+}
+
+/* GENERAL LAYOUT */
+.student-page__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--milk);
+  color: var(--navy);
+}
+
+.student-page__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--burgundy);
+  font-weight: 700;
+}
+
+.student-page__section-title {
+  font-size: 1.4rem;
+  color: var(--burgundy);
+  margin: 1.5rem 0 0.5rem;
+  border-bottom: 2px solid var(--navy);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+/* PROFILE BLOCK */
+.student-page__profile-block {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.student-page__avatar-wrap {
+  flex: 0 0 160px;
+  text-align: center;
+}
+
+.student-page__avatar-img-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--burgundy);
+  margin: 0 auto 1rem;
+}
+
+.student-page__avatar-img {
+  object-fit: cover;
+}
+
+.student-page__avatar-upload-label {
+  display: block;
+  cursor: pointer;
+}
+
+.student-page__avatar-input {
+  display: none;
+}
+
+.student-page__avatar-btn {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--milk);
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.student-page__avatar-btn:hover {
+  background: var(--burgundy);
+}
+
+/* BASIC FIELDS */
+.student-page__basic-fields {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.student-page__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.student-page__input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.student-page__input:focus {
+  border-color: var(--burgundy);
+  outline: none;
+}
+
+.student-page__readonly {
+  padding: 0.6rem;
+  background: #eee;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* BLOCK SECTIONS */
+.student-page__contact-block,
+.student-page__health-block,
+.student-page__security-block {
+  margin-bottom: 2rem;
+}
+
+.student-page__note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* ACTIONS */
+.student-page__actions {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.student-page__save-btn,
+.student-page__reset-pw-btn {
+  background: var(--burgundy);
+  color: var(--milk);
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.student-page__save-btn:hover,
+.student-page__reset-pw-btn:hover {
+  background: var(--navy);
+}
+
+.student-page__save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* LOADING */
+.student-page__loading {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+  color: var(--burgundy);
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+  .student-page__basic-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .student-page__profile-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .student-page__avatar-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .student-page__title {
+    font-size: 1.6rem;
+  }
+}

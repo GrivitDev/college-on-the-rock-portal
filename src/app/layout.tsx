@@ -18,6 +18,12 @@ import "@/styles/expenditure.css";
 import "@/styles/admin-reports.css";
 import "@/styles/reset.css";
 import '@/styles/users.css'
+import "@/styles/dashboard.css";
+import "@/styles/hero-section.css";
+import "@/styles/news-section.css";
+import "@/styles/student-page.css";
+import "@/styles/hof-section.css";
+import "@/styles/executives-section.css";
 
 // Font Setup
 const inter = Inter({
