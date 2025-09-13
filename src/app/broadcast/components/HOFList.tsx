@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import HOFModal from "./HOFModal";
 
 interface HOF {
@@ -40,9 +41,11 @@ export default function HOFList() {
       <ul className="broadcast-hof-items">
         {hofs.map((hof) => (
           <li key={hof._id} className="broadcast-hof-item">
-            <img
+            <Image
               src={hof.imageUrl}
               alt={hof.name}
+              width={100}   // pick appropriate width
+              height={100}  // pick appropriate height
               className="broadcast-hof-img"
             />
             <div>

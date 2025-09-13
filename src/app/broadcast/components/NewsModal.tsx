@@ -2,14 +2,23 @@
 
 import { useState } from "react";
 
+interface News {
+  _id?: string;   // optional since new items won’t have it yet
+  title: string;
+  date: string;
+  summary: string;
+  details: string;
+  by: string;
+}
+
 interface Props {
   onClose: () => void;
   refresh: () => void;
-  editing?: any | null;
+  editing?: News | null;
 }
 
 export default function NewsModal({ onClose, refresh, editing }: Props) {
-  const [form, setForm] = useState(
+  const [form, setForm] = useState<News>(
     editing || {
       title: "",
       date: "",
@@ -19,7 +28,9 @@ export default function NewsModal({ onClose, refresh, editing }: Props) {
     }
   );
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 

@@ -2,10 +2,17 @@
 
 import { useState } from "react";
 
+interface HOF {
+  _id?: string;          // optional because new entries won’t have one yet
+  name: string;
+  description?: string;
+  imageUrl?: string;
+}
+
 interface Props {
   onClose: () => void;
   refresh: () => void;
-  editing?: any | null;
+  editing?: HOF | null;
 }
 
 export default function HOFModal({ onClose, refresh, editing }: Props) {
@@ -15,7 +22,9 @@ export default function HOFModal({ onClose, refresh, editing }: Props) {
     image: null as File | null,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
