@@ -160,7 +160,7 @@
 }
 
 .dashboard-navbar__logout-btn:hover {
-  background-color: var(--navy);
+  background-color: #cc0335;
 }
 
 /* LOGO */
