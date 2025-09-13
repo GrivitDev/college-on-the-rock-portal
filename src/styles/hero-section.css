@@ -174,7 +174,7 @@
 
 @media (max-width: 480px) {
     .stellar-hero-card {
-        max-width: 200px;
+        max-width: 300px;
     }
     .stellar-profile-container {
     flex-direction: column;
@@ -190,19 +190,11 @@
     font-size: 1.5rem;
   }
 
-.stellar-payment-stats {
-  display: grid;
-  grid-template-columns: repeat(2, auto); /* exactly 2 per row */
-  gap: 1rem 2rem; /* row-gap, column-gap */
-  justify-content: center; /* centers the whole grid */
-}
-
-.stellar-stat-card {
-  width: 60px;     /* lock width */
-  max-width: 60px;
-  padding: 0.4rem;
-  text-align: center;
-}
+  .stellar-stat-card {
+    flex: 2 2 60px;
+    max-width: 60px;
+    padding: 0.4rem;
+  }
 
   .stellar-stat-count {
     font-size: 1.2rem;
