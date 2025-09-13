@@ -141,10 +141,10 @@ export default function HeroSection({ student }: HeroSectionProps) {
             <div className="stellar-quick-links">
             <ul>
                 <li>
-                <a href="/dashboard/make-payment">Make your Payments</a>
+                <a href="/dashboard/make-payment">👉 Make your Payments</a>
                 </li>
                 <li>
-                <a href="/dashboard/upload-receipt">Upload your recipts</a>
+                <a href="/dashboard/upload-receipt">👉 Upload your recipts</a>
                 </li>
             </ul>
             </div>

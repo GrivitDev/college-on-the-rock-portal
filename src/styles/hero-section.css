@@ -159,7 +159,7 @@
   opacity: 0.8;
 }
 
-/* Quick Links */
+/* Quick Links (Mobile First) */
 .stellar-quick-links {
   margin-top: 0.5rem;
   width: 100%;
@@ -169,29 +169,74 @@
 
 .stellar-quick-links ul {
   display: flex;
-  gap: 1rem;
+  flex-direction: column; /* stack by default (mobile first) */
+  gap: 0.8rem;
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .stellar-quick-links a {
   text-decoration: none;
   font-weight: bolder;
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* slightly smaller on mobile */
   color: #fff8f0;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
+
+  /* Animation & Glow */
+  display: inline-block;
+  transition: color 0.3s ease, border-bottom 0.3s ease, transform 0.3s ease;
+  animation: pulseGlow 2s infinite;
 }
 
+/* Hover effect */
 .stellar-quick-links a:hover {
-  color: #f0b429; /* golden accent */
+  color: #f0b429;
   border-bottom: 2px solid #f0b429;
+  transform: scale(1.15);
+  text-shadow: 0 0 10px rgba(240, 180, 41, 0.9), 
+               0 0 20px rgba(240, 180, 41, 0.6);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+/* Pulse animation */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 5px rgba(255, 248, 240, 0.6), 
+                 0 0 10px rgba(255, 248, 240, 0.4);
+  }
+  50% {
+    transform: scale(1.08);
+    text-shadow: 0 0 12px rgba(240, 180, 41, 0.9), 
+                 0 0 25px rgba(240, 180, 41, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px rgba(255, 248, 240, 0.6), 
+                 0 0 10px rgba(255, 248, 240, 0.4);
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 600px) {
+  .stellar-quick-links ul {
+    flex-direction: row; /* switch to row */
+    gap: 1.5rem;
+  }
+
+  .stellar-quick-links a {
+    font-size: 1.3rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .stellar-quick-links a {
+    font-size: 1.5rem; /* larger on big screens */
+  }
+
   .stellar-hero-flex {
     flex-direction: column;
     align-items: center;
