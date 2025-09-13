@@ -1,187 +1,359 @@
-:root {
-  --burgundy: #800020;
-  --navy: #001f54;
-  --milk: #fdfdf5;
+/* ===========================
+   Global page container
+=========================== */
+.sp-page__container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
 }
 
-/* GENERAL LAYOUT */
-.student-page__container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  background: var(--milk);
-  color: var(--navy);
-}
-
-.student-page__title {
+/* ===========================
+   Loading state
+=========================== */
+.sp-page__loading {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--burgundy);
+  font-size: 1.5rem;
+  margin-top: 5rem;
+  color: #555;
+}
+
+/* ===========================
+   Page Title
+=========================== */
+.sp-page__title {
+  font-size: 2.2rem;
   font-weight: 700;
-}
-
-.student-page__section-title {
-  font-size: 1.4rem;
-  color: var(--burgundy);
-  margin: 1.5rem 0 0.5rem;
-  border-bottom: 2px solid var(--navy);
-  display: inline-block;
-  padding-bottom: 0.25rem;
-}
-
-/* PROFILE BLOCK */
-.student-page__profile-block {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.student-page__avatar-wrap {
-  flex: 0 0 160px;
   text-align: center;
+  margin-bottom: 2rem;
+  color: #222;
 }
 
-.student-page__avatar-img-wrap {
+/* ===========================
+   Profile Block
+=========================== */
+.sp-profile-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.sp-avatar-wrap {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.sp-avatar-img-wrap {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--burgundy);
-  margin: 0 auto 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
 }
 
-.student-page__avatar-img {
+.sp-avatar-img {
   object-fit: cover;
 }
 
-.student-page__avatar-upload-label {
-  display: block;
+.sp-avatar-upload-label {
   cursor: pointer;
+  display: block;
+  text-align: center;
 }
 
-.student-page__avatar-input {
+.sp-avatar-input {
   display: none;
 }
 
-.student-page__avatar-btn {
+.sp-avatar-btn {
   display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  background: var(--navy);
-  color: var(--milk);
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border-radius: 50px;
   font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sp-avatar-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===========================
+   Basic Fields
+=========================== */
+.sp-basic-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.sp-field {
+  font-size: 1rem;
+  line-height: 1.5;
+  background: #f9f9f9;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
   transition: background 0.3s;
 }
 
-.student-page__avatar-btn:hover {
-  background: var(--burgundy);
+.sp-field strong {
+  color: #333;
 }
 
-/* BASIC FIELDS */
-.student-page__basic-fields {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+.sp-field:hover {
+  background: #eef0f7;
 }
 
-.student-page__label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 0.2rem;
-  display: block;
-}
-
-.student-page__input {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 0.95rem;
-}
-
-.student-page__input:focus {
-  border-color: var(--burgundy);
-  outline: none;
-}
-
-.student-page__readonly {
-  padding: 0.6rem;
-  background: #eee;
-  border-radius: 6px;
-  font-size: 0.95rem;
-}
-
-/* BLOCK SECTIONS */
-.student-page__contact-block,
-.student-page__health-block,
-.student-page__security-block {
+/* ===========================
+   Info Display Sections
+=========================== */
+.sp-info-display {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   margin-bottom: 2rem;
 }
 
-.student-page__note {
-  font-size: 0.9rem;
-  color: #555;
+.sp-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
   margin-bottom: 1rem;
+  color: #444;
+  border-bottom: 2px solid #2575fc;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  margin-top: 1rem;
 }
 
-/* ACTIONS */
-.student-page__actions {
+/* ===========================
+   Actions
+=========================== */
+.sp-actions {
   text-align: center;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
-.student-page__save-btn,
-.student-page__reset-pw-btn {
-  background: var(--burgundy);
-  color: var(--milk);
-  border: none;
-  padding: 0.7rem 1.4rem;
-  border-radius: 6px;
+.sp-edit-btn {
+  padding: 0.7rem 1.8rem;
   font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
-.student-page__save-btn:hover,
-.student-page__reset-pw-btn:hover {
-  background: var(--navy);
+.sp-edit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.student-page__save-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* LOADING */
-.student-page__loading {
-  text-align: center;
-  font-size: 1.2rem;
+/* ===========================
+   Security Section
+=========================== */
+.sp-security-block {
+  background: #fff;
   padding: 2rem;
-  color: var(--burgundy);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-/* RESPONSIVENESS */
-@media (max-width: 768px) {
-  .student-page__basic-fields {
-    grid-template-columns: 1fr;
-  }
+.sp-note {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
 
-  .student-page__profile-block {
+.sp-reset-pw-btn {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sp-reset-pw-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* ===========================
+   Modal Styles
+=========================== */
+.sp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.sp-modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.sp-modal-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.sp-label {
+  display: block;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.sp-input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.sp-input:focus {
+  border-color: #2575fc;
+  outline: none;
+  box-shadow: 0 0 10px rgba(37,117,252,0.3);
+}
+
+/* ===========================
+   Modal Actions
+=========================== */
+.sp-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.sp-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sp-btn-save {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+.sp-btn-save:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.sp-btn-cancel {
+  background: #eee;
+  color: #444;
+}
+
+.sp-btn-cancel:hover {
+  background: #ddd;
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+@media (max-width: 1024px) {
+  .sp-profile-block {
     flex-direction: column;
     align-items: center;
   }
 
-  .student-page__avatar-wrap {
-    margin-bottom: 1rem;
+  .sp-basic-fields {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .sp-profile-block, .sp-info-display, .sp-security-block {
+    padding: 1.5rem;
   }
 
-  .student-page__title {
-    font-size: 1.6rem;
+  .sp-avatar-wrap {
+    width: 140px;
+  }
+
+  .sp-avatar-img-wrap {
+    width: 140px;
+    height: 140px;
+  }
+
+  .sp-page__title {
+    font-size: 1.8rem;
+  }
+
+  .sp-section-title {
+    font-size: 1.2rem;
+  }
+
+  .sp-edit-btn, .sp-reset-pw-btn, .sp-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-modal-content {
+    padding: 1rem;
+  }
+
+  .sp-modal-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sp-btn, .sp-edit-btn, .sp-reset-pw-btn {
+    width: 100%;
   }
 }

@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { FaQuestionCircle } from 'react-icons/fa'; // react-icons for help icon
+import { FaBars, FaTimes, FaQuestionCircle, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import { MdInfo, MdPayment, MdHistory } from 'react-icons/md';
 import api from '@/lib/api';
 
 // Components (import your other dashboard sections here)
@@ -60,8 +61,9 @@ export default function DashboardPage() {
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
           aria-label="Toggle menu"
         >
-          ☰
+          {mobileNavOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
+
 
         {/* Desktop & Mobile Links */}
         <ul
@@ -69,10 +71,26 @@ export default function DashboardPage() {
             mobileNavOpen ? 'dashboard-navbar__links--open' : ''
           }`}
         >
-          <li><a href="/dashboard/personal-info">Personal Info</a></li>
-          <li><a href="/dashboard/make-payment">Payments</a></li>
-          <li><a href="/dashboard/upload-receipt">Payment Approval</a></li>
-          <li><a href="/dashboard/payment-history">History & Receipts</a></li>
+          <li>
+            <a href="/dashboard/personal-info">
+              <MdInfo size={18} /> Personal Info
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard/make-payment">
+              <MdPayment size={18} /> Payments
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard/upload-receipt">
+              <MdInfo size={18} /> Payment Approval
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard/payment-history">
+              <MdHistory size={18} /> History & Receipts
+            </a>
+          </li>
 
           {/* Help with popup */}
           <li className="dashboard-navbar__help-wrapper">
@@ -92,14 +110,16 @@ export default function DashboardPage() {
                     <li key={idx} className="dashboard-navbar__help-item">
                       <span>Support {idx + 1}: {num}</span>
                       <div className="dashboard-navbar__help-actions">
-                        <a href={`tel:${num}`} title="Call">📞</a>
+                        <a href={`tel:${num}`} title="Call">
+                          <FaPhoneAlt />
+                        </a>
                         <a
                           href={`https://wa.me/${num.replace(/\D/g, '')}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           title="WhatsApp"
                         >
-                          💬
+                          <FaWhatsapp color="green" />
                         </a>
                       </div>
                     </li>
@@ -115,6 +135,7 @@ export default function DashboardPage() {
             </button>
           </li>
         </ul>
+
 
         {/* Logo on right */}
         <div className="dashboard-navbar__logo">
