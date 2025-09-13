@@ -190,11 +190,19 @@
     font-size: 1.5rem;
   }
 
-  .stellar-stat-card {
-    flex: 1 1 40px;
-    max-width: 50px;
-    padding: 0.4rem;
-  }
+.stellar-payment-stats {
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* exactly 2 per row */
+  gap: 1rem 2rem; /* row-gap, column-gap */
+  justify-content: center; /* centers the whole grid */
+}
+
+.stellar-stat-card {
+  width: 60px;     /* lock width */
+  max-width: 60px;
+  padding: 0.4rem;
+  text-align: center;
+}
 
   .stellar-stat-count {
     font-size: 1.2rem;
