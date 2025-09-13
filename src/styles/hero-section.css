@@ -109,7 +109,7 @@
 
 /* Payment stats */
 .stellar-payment-stats {
-  /* display: flex; */
+  display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   flex: 1 1 400px;
@@ -191,7 +191,7 @@
   }
 
   .stellar-stat-card {
-    flex: 2 2 40px;
+    flex: 1 1 60px;
     max-width: 60px;
     padding: 0.4rem;
   }
