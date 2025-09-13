@@ -291,18 +291,6 @@ export default function StudentPersonalInfoPage() {
               value={editInfo.allergies ?? ''}
               onChange={(e) => setEditInfo({ ...editInfo, allergies: e.target.value })}
             />
-            <label className="sp-label">Hostel</label>
-            <input
-              className="sp-input"
-              value={editInfo.hostel ?? ''}
-              onChange={(e) => setEditInfo({ ...editInfo, hostel: e.target.value })}
-            />
-            <label className="sp-label">Bunk Code</label>
-            <input
-              className="sp-input"
-              value={editInfo.bunkCode ?? ''}
-              onChange={(e) => setEditInfo({ ...editInfo, bunkCode: e.target.value })}
-            />
 
             <div className="sp-modal-actions">
               <button className="sp-btn sp-btn-save" onClick={handleSaveProfile} disabled={savingProfile}>

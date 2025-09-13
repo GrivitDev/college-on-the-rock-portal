@@ -4,11 +4,12 @@
 
 .stellar-hero-wrapper {
   width: 100%;
+  min-height: 100vh;          /* ensure full screen height */
   padding: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #800020; /* burgundy */
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+  background: #800020;        /* burgundy */
   position: relative;
   overflow: hidden;
 }
@@ -58,7 +59,8 @@
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;    /* ✅ center contents instead of pushing apart */
+  width: 100%;                /* ensure it respects parent card width */
 }
 
 /* Profile section */
