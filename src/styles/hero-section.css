@@ -16,7 +16,7 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  margin-left: -55px;
+  margin-left: -60px;
   align-items: center;  
   background: rgba(255, 248, 240, 0.05); 
   backdrop-filter: blur(15px);
@@ -109,7 +109,7 @@
 
 /* Payment stats */
 .stellar-payment-stats {
-  display: flex;
+  /* display: flex; */
   gap: 1rem;
   flex-wrap: wrap;
   flex: 1 1 400px;
