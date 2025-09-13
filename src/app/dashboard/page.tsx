@@ -111,7 +111,7 @@ export default function DashboardPage() {
                       <span>Support {idx + 1}: {num}</span>
                       <div className="dashboard-navbar__help-actions">
                         <a href={`tel:${num}`} title="Call">
-                          <FaPhoneAlt />
+                          <FaPhoneAlt size={18} />
                         </a>
                         <a
                           href={`https://wa.me/${num.replace(/\D/g, '')}`}
@@ -119,7 +119,7 @@ export default function DashboardPage() {
                           rel="noopener noreferrer"
                           title="WhatsApp"
                         >
-                          <FaWhatsapp color="green" />
+                          <FaWhatsapp color="green" size={18} />
                         </a>
                       </div>
                     </li>
