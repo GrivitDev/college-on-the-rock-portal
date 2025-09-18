@@ -103,14 +103,6 @@ export default function MakePayment() {
     return record?.status ?? null;
   };
 
-  const alreadyPaid = (catId: string): string | null => {
-    const status = getCategoryStatus(catId);
-    if (!status) return null;
-    if (status === 'approved') return '✅ Already paid';
-    if (status === 'pending' || status === 'waiting_approval') return '⏳ Payment in progress';
-    if (status === 'rejected') return null;
-    return null;
-  };
 
   const selectedCategoryObjects = categories.filter(c => selectedCategories.includes(c._id));
   const grandTotal = selectedCategoryObjects.reduce(
