@@ -26,22 +26,30 @@ export default function UploadReceipt() {
   const [session, setSession] = useState('');
   const [semester, setSemester] = useState<'first' | 'second' | ''>('');
   const [payments, setPayments] = useState<Payment[]>([]);
-  const [uploading, setUploading] = useState<string | null>(null);
-  const [files, setFiles] = useState<Record<string, File | null>>({});
-  const [messages, setMessages] = useState<Record<string, string>>({});
+  const [file, setFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [messages, setMessages] = useState<string>('');
+  const [selectedPayments, setSelectedPayments] = useState<string[]>([]);
 
+  // Load sessions
   useEffect(() => {
-    api.get<Session[]>('/sessions')
-      .then(res => setSessions(res.data))
+    api
+      .get<Session[]>('/sessions')
+      .then((res) => setSessions(res.data))
       .catch(() => setSessions([]));
   }, []);
 
+  // Load payments when session/semester changes
   useEffect(() => {
     const fetchPayments = async () => {
       if (!session || !semester) return setPayments([]);
       try {
-        const res = await api.get<Payment[]>(`/payments/pending?session=${session}&semester=${semester}`);
-        setPayments(res.data.filter(p => p.status === 'pending' || p.status === 'rejected'));
+        const res = await api.get<Payment[]>(
+          `/payments/pending?session=${session}&semester=${semester}`
+        );
+        setPayments(
+          res.data.filter((p) => p.status === 'pending' || p.status === 'rejected')
+        );
       } catch {
         setPayments([]);
       }
@@ -49,50 +57,69 @@ export default function UploadReceipt() {
     fetchPayments();
   }, [session, semester]);
 
-  const handleFileChange = (paymentId: string, file: File | null) => {
-    if (file && file.size > 5 * 1024 * 1024) {
-      setMessages(prev => ({ ...prev, [paymentId]: 'File size exceeds 5MB. Please select a smaller file.' }));
-      setFiles(prev => ({ ...prev, [paymentId]: null }));
-      return;
-    }
-    setMessages(prev => ({ ...prev, [paymentId]: '' }));
-    setFiles(prev => ({ ...prev, [paymentId]: file }));
+  // Toggle selection
+  const togglePaymentSelection = (id: string) => {
+    setSelectedPayments((prev) =>
+      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
+    );
   };
 
-  const handleUpload = async (paymentId: string) => {
-    const file = files[paymentId];
+  // Handle file selection
+  const handleFileChange = (f: File | null) => {
+    if (f && f.size > 5 * 1024 * 1024) {
+      setMessages('File size exceeds 5MB. Please select a smaller file.');
+      setFile(null);
+      return;
+    }
+    setMessages('');
+    setFile(f);
+  };
+
+  // Upload once and attach to selected payments
+  const handleUpload = async () => {
     if (!file) {
-      setMessages(prev => ({ ...prev, [paymentId]: 'No file selected.' }));
+      setMessages('Please select a file first.');
+      return;
+    }
+    if (selectedPayments.length === 0) {
+      setMessages('Please select at least one payment.');
       return;
     }
 
     const fd = new FormData();
     fd.append('receipt', file);
-    setUploading(paymentId);
+    setUploading(true);
 
     try {
-      await api.post(`/payments/upload-receipt/${paymentId}`, fd, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      // Upload once
+      const res = await api.post<{ receiptUrl: string }>(
+        '/payments/upload-receipt',
+        fd,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+      );
+      const { receiptUrl } = res.data;
 
-      setMessages(prev => ({
-        ...prev,
-        [paymentId]: 'Receipt uploaded successfully. Awaiting approval.',
-      }));
-
-      setPayments(prev =>
-        prev.map(p =>
-          p._id === paymentId
-            ? { ...p, status: 'waiting_approval', receiptUrl: 'uploaded' }
-            : p
+      // Attach to all selected payments
+      await Promise.all(
+        selectedPayments.map((id) =>
+          api.post(`/payments/attach-receipt/${id}`, { receiptUrl })
         )
       );
 
-      setFiles(prev => ({ ...prev, [paymentId]: null }));
+      setMessages('Receipt uploaded successfully to selected payments.');
+      setPayments((prev) =>
+        prev.map((p) =>
+          selectedPayments.includes(p._id)
+            ? { ...p, status: 'waiting_approval', receiptUrl }
+            : p
+        )
+      );
+      setFile(null);
+      setSelectedPayments([]);
     } catch {
-      setMessages(prev => ({ ...prev, [paymentId]: 'Upload failed. Try again later.' }));
+      setMessages('Upload failed. Try again later.');
     } finally {
-      setUploading(null);
+      setUploading(false);
     }
   };
 
@@ -101,34 +128,42 @@ export default function UploadReceipt() {
       <h2 className="upload-receipt-title">Payment Receipts Upload</h2>
 
       <div className="upload-receipt-instructions">
-        Please select a <strong>session</strong> and <strong>semester</strong> to view pending or rejected payments.
+        Please select a <strong>session</strong> and <strong>semester</strong> to
+        view pending or rejected payments.
         <ul className="upload-guidelines">
           <li>Ensure your receipt is in PDF or image format.</li>
-          <li>Maximum file size: <strong>5MB</strong>.</li>
+          <li>
+            Maximum file size: <strong>5MB</strong>.
+          </li>
           <li>If rejected, confirm your transaction and re-upload.</li>
-          <li>After uploading, status will change to <em>Awaiting approval</em>.</li>
+          <li>
+            After uploading, status will change to <em>Awaiting approval</em>.
+          </li>
         </ul>
       </div>
 
+      {/* Session & Semester */}
       <div className="upload-controls">
         <select
           className="upload-session-select"
           value={session}
-          onChange={e => {
+          onChange={(e) => {
             setSession(e.target.value);
             setSemester('');
             setPayments([]);
           }}
         >
           <option value="">Select Session</option>
-          {sessions.map(s => (
-            <option key={s._id} value={s._id}>{s.sessionTitle}</option>
+          {sessions.map((s) => (
+            <option key={s._id} value={s._id}>
+              {s.sessionTitle}
+            </option>
           ))}
         </select>
 
         {session && (
           <div className="upload-semester-options">
-            {(['first', 'second'] as const).map(s => (
+            {(['first', 'second'] as const).map((s) => (
               <label key={s} className="upload-semester-label">
                 <input
                   type="radio"
@@ -144,55 +179,81 @@ export default function UploadReceipt() {
         )}
       </div>
 
+      {/* File input for all */}
+      <div className="upload-file-action">
+        <input
+          type="file"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleFileChange(e.target.files?.[0] || null)
+          }
+          className="upload-file-input"
+        />
+        <p className="upload-file-note">PDF or image. Max 5MB.</p>
+      </div>
+
+      {/* Payments List */}
       <div className="upload-payment-list">
         {payments.length === 0 && session && semester && (
-          <p className="upload-no-payments">No pending or rejected payments found.</p>
+          <p className="upload-no-payments">
+            No pending or rejected payments found.
+          </p>
         )}
 
-        {payments.map(p => (
+        {payments.map((p) => (
           <div key={p._id} className="upload-payment-card">
-            <h4 className="upload-payment-title">{p.categoryId.title}</h4>
-            <p><strong>Total:</strong> ₦{p.total}</p>
-            <p><strong>Status:</strong> {p.status}</p>
-            <p><strong>Account:</strong> {p.categoryId.accountName} • {p.categoryId.accountNo} ({p.categoryId.bank})</p>
-
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedPayments.includes(p._id)}
+                onChange={() => togglePaymentSelection(p._id)}
+              />
+              <strong>{p.categoryId.title}</strong>
+            </label>
+            <p>
+              <strong>Total:</strong> ₦{p.total}
+            </p>
+            <p>
+              <strong>Status:</strong> {p.status}
+            </p>
+            <p>
+              <strong>Account:</strong> {p.categoryId.accountName} •{' '}
+              {p.categoryId.accountNo} ({p.categoryId.bank})
+            </p>
             {p.status === 'rejected' && (
               <p className="upload-error-message">
-                <strong>Rejected:</strong> Payment was rejected. Please verify and re-upload.
-              </p>
-            )}
-
-            {(!p.receiptUrl || p.status === 'rejected') && (
-              <div className="upload-file-action">
-                <input
-                  type="file"
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleFileChange(p._id, e.target.files?.[0] || null)
-                  }
-                  className="upload-file-input"
-                />
-                <p className="upload-file-note">PDF or image. Max 5MB.</p>
-                <button
-                  className="upload-btn"
-                  onClick={() => handleUpload(p._id)}
-                  disabled={uploading === p._id}
-                >
-                  {uploading === p._id ? <span className="btn-spinner" /> : 'Upload Receipt'}
-                </button>
-              </div>
-            )}
-
-            {messages[p._id] && (
-              <p className={`upload-feedback ${
-                messages[p._id].includes('successfully') ? 'success' :
-                messages[p._id].includes('failed') ? 'error' : 'info'
-              }`}>
-                {messages[p._id]}
+                <strong>Rejected:</strong> Payment was rejected. Please verify
+                and re-upload.
               </p>
             )}
           </div>
         ))}
       </div>
+
+      {/* Upload Button */}
+      {payments.length > 0 && (
+        <button
+          className="upload-btn"
+          onClick={handleUpload}
+          disabled={uploading}
+        >
+          {uploading ? <span className="btn-spinner" /> : 'Upload Receipt'}
+        </button>
+      )}
+
+      {/* Feedback */}
+      {messages && (
+        <p
+          className={`upload-feedback ${
+            messages.includes('successfully')
+              ? 'success'
+              : messages.includes('failed')
+              ? 'error'
+              : 'info'
+          }`}
+        >
+          {messages}
+        </p>
+      )}
     </div>
   );
 }
