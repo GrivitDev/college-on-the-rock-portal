@@ -156,6 +156,8 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     text-align: left;
     color: #0A0A0A;
+    max-height: 80vh;  
+    overflow-y: auto;  
   }
   
   .modal-payment-box h3 {
