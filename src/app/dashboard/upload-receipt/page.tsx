@@ -92,11 +92,13 @@ export default function UploadReceipt() {
 
     try {
       // Upload once
-      const res = await api.post<{ receiptUrl: string }>(
-        '/payments/upload-receipt',
-        fd,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
-      );
+ // Upload once
+        const res = await api.post<{ receiptUrl: string }>(
+          `/payments/upload-receipt/${selectedPayments[0]}`, // use the first selected payment
+          fd,
+          { headers: { 'Content-Type': 'multipart/form-data' } }
+        );
+
       const { receiptUrl } = res.data;
 
       // Attach to all selected payments
